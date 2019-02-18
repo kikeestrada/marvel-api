@@ -1,5 +1,3 @@
-// Libraries imported
-import {Prism} from "../../node_modules/prismjs"
 import {saludo} from'./components/example'
 import {despedida} from'./components/example'
 
