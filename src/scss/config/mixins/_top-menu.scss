@@ -1,0 +1,45 @@
+@mixin mb-rl-SideMenuDimentions{
+	position   : fixed;
+	top        : 45px;
+	width      : 260px;
+	padding    : 1em 1em 2em;
+	height     : calc(100vh - 65px);
+	transition : right .5s;
+	overflow-y : auto;
+}
+@mixin mb-tb-SideMenuDimentions{
+	position: fixed;
+	width: 100%;
+	left:0;
+	right: 0;
+	background: rgba(#666,.4);
+	height: 300px;
+	z-index: -50;
+	transition: all .3s;
+	margin: 0;
+	padding: 0;
+}
+@mixin leftNav(){
+	left:-100%;
+	&.show-sideNav {
+		left: 0;
+	}
+}
+@mixin rightNav(){
+	right: -260px;
+	&.show-sideNav {
+		right: 0;
+	}
+}
+@mixin topNav(){
+	top: -300px;
+	&.show-sideNav {
+		top:0;
+	}
+}
+@mixin bottomNav(){
+	bottom: -300px;
+	&.show-sideNav {
+		bottom: 0;
+	}
+}

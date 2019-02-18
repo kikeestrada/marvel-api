@@ -1,0 +1,6 @@
+//-
+mixin rwdImage(imgUrl1, imgUrl1_alt,imgUrl2,imgUrl2_alt,imgUrl3, imgUrl3_alt)
+	picture
+		source(srcset=`assets/img/${imgUrl3}`, alt=imgUrl3_alt, media='(min-width:992px)')
+		source(srcset=`assets/img/${imgUrl2}`, alt=imgUrl2_alt, media='(min-width:768px)')
+		img(src=`assets/img/${imgUrl1}`, alt=imgUrl1_alt)

@@ -1,0 +1,15 @@
+// RWD Bases box-sizing: border-box; global settings
+*::selection {
+	background: steelblue;
+	color: white;
+}
+*::-moz-selection{
+	background: steelblue;
+	color: white;
+}
+
+body {
+	background        : white;
+	font-family       : Lato, 'sans-serif';
+	color             : #333;
+}

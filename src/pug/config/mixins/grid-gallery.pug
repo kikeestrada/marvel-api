@@ -1,0 +1,9 @@
+//- Images Grid basesd in Css Grid
+mixin grid(galleryCont, galleryItem, imgUrl, ext, numberItems)
+	//Gallery Container
+	div(class=`${galleryCont}`)
+		-for (var i=0; i < `${numberItems}`; i++)
+			//Gallery Item
+			div(class=`${galleryItem}`)
+				//gallery Image
+				img(src=`assets/img/${imgUrl}.${ext}`)

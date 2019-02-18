@@ -1,0 +1,20 @@
+mixin card(cardImage, cardTitle, cardSub, cardText, cardlink, user, imageUser,  linkuser)
+	div(class='card')
+		div(class='card__img')
+			img(src=cardImage)
+		div(class='card__content')
+			div(class='card__title')
+				p=cardTitle
+			div(class='card__subtitle')
+				p=cardSub
+			div(class='card__body')
+				p=cardText
+			footer(class='card__footer')
+				if (user !== "no")
+					div(class='card__user')
+						div(class='card__user-img')
+							img(src=imageUser)
+						div(class='card__user-name')
+							a(target="_blank" href=linkuser)= user
+				div(class='card__button')
+					a(target="_blank" href=cardlink title=cardTitle class='button--ghost--tertiary button--small') Ver página
