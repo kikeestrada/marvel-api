@@ -1,5 +1,5 @@
 {
-	"name": "ed-boilerplate",
+	"name": "myGulpBoilerplate2019",
 	"version": "1.0.0",
 	"description": "Simple scafolding for statics web projects",
 	"main": "gulpfile.babel.js",
@@ -10,7 +10,7 @@
 	"images": "gulp images",
 	"sitemap": "gulp sitemap"
 	},
-	"author": "Alvaro Felipe",
+	"author": "Enrique Estrada",
 	"license": "GPL-2.0",
 	"dependencies": {
 		"ed-grid": "^2.8.1",
