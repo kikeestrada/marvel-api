@@ -209,6 +209,11 @@ gulp.task('images-dev', () => {
     .pipe(gulp.dest('./public/assets/img'))
 });
 
+gulp.task('fonts-dev', () => {
+	gulp.src('./src/fonts/**/**')
+		.pipe(gulp.dest('./public/assets/fonts'))
+});
+
 gulp.task('videos-dev', () => {
   gulp.src('./src/video/**/**')
     .pipe(gulp.dest('./public/assets/video'))
@@ -230,7 +235,7 @@ gulp.task('sitemap', () => {
     .pipe(gulp.dest('./public'))
 });
 
-gulp.task('dev', ['styles-dev', 'pug-dev', 'scripts-dev', 'images-dev','audios-dev', 'videos-dev'], () => {
+gulp.task('dev', ['styles-dev', 'pug-dev', 'scripts-dev', 'images-dev','audios-dev', 'videos-dev', 'fonts-dev'], () => {
   server.init({
     server: {
       baseDir: './public'
