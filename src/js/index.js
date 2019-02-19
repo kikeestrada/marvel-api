@@ -1,9 +1,8 @@
-import {saludo} from'./components/example'
-import {despedida} from'./components/example'
+import {inicio} from'../../../../myFrameWoks/myStyleGuide/src/js/index.js'
+
 
 (()=>{
-	saludo();
-	despedida();
+	inicio();
 	if (document.body.classList.contains('home')) {
 		// functions here
 	}else if (document.body.classList.contains('page2')) {
