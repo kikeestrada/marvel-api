@@ -59,33 +59,6 @@ gulp.task('styles-dev', () => {
 
 gulp.task('styles-build', () => {
   gulp.src('./src/scss/styles.scss')
-	.pipe(uncss({
-		  html : [
-			  './public/*.html'
-		  ],
-		  ignore: [
-			  '.hamburger--slider-r.is-active .hamburger-inner',
-			  '.hamburger--slider-r.is-active .hamburger-inner::before',
-			  '.hamburger--slider-r.is-active .hamburger-inner::after',
-			  '.top-menu__mb-menu.show-sideNav',
-			  'body.show-sideBody',
-			  '.ed-tab__tab-link.tab-link-active',
-			  '.ed-tab__tab-panel.tab-panel-active',
-			  '.hero-container__hero-item',
-			  '.ed-modal-container',
-			  '.ed-modal-content',
-			  '.fa-youtube-play',
-			  '.Youtube',
-			  '.Youtube-wrapper',
-			  '.Youtube iframe',
-			  '.Youtube a',
-
-
-		  ],
-		  ignoreSheets: [
-			  //
-		  ]
-	  }))
     .pipe(plumber())
     .pipe(sass({
       importer: tildeImporter,
@@ -121,6 +94,17 @@ gulp.task('styles-build', () => {
 	  }))
 	  .pipe(stripCssComments({
 		  preserve: false
+	  }))
+	  .pipe(uncss({
+		  html : [
+			  './public/*.html'
+		  ],
+		  ignore: [
+			  //
+		  ],
+		  ignoreSheets: [
+			  //
+		  ]
 	  }))
     .pipe(gulp.dest('./public/assets/css/'))
 });
