@@ -1,0 +1,27 @@
+div(class='ed-container')
+	div(class='ed-item')
+		:markdown-it
+			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+			- Lorem ipsum dolor sit amet consectetur adipisicing `elit`.
+div(class='ed-container')
+	div(class='ed-item')
+		:markdown-it(html)
+			```html
+				<div class="main-banner img-container" id="main-banner">
+					<div class="ed-grid lg-grid-6">
+						<div class="lg-cols-4 lg-x-2">
+							<img class="main-banner__img" src="tu-imagen.jpg">
+							<div class="main-banner__data s-center">
+								<p class="t2 s-mb-0">Título del banner</p>
+								<p> Subtítulo del banner</p>
+								<a href="#" class="button">Botón del banner</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			```
+div(class='ed-container')
+	div(class='ed-item')
+		include:markdown-it(html) ../md/example.md

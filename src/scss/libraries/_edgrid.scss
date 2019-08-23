@@ -1,0 +1,16 @@
+// Settings for EDgrid
+$dev        		: false;
+$cssCore    		: false;
+$cssHelpers 		: true;
+$max-width 			: 1200px;
+$gutter     		: 1rem;
+$fractions : 1,2,3,4,5,6,7,8,9,10;
+$breakpoints 		:
+	(
+		s	: 0,
+		m	: 640px,
+		l	: 960px,
+		lg	: 1280px,
+		xl	: 1600px
+	);
+@import "~ed-grid/ed-grid";
