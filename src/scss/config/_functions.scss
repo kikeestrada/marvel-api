@@ -1,1 +1,9 @@
+@function img($img) {
+	@return url(#{$images-path}/#{$img});
+}
+
+
+@function img2($img,$ext) {
+	@return url(../img/#{$img}.#{$ext})
+}
 
