@@ -3,31 +3,27 @@ block config
 	include mixins/mixins
 doctype html
 html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
-	include utilis/bodyElements/IEtags
+	include utilis/body-utilies/IEtags
 	head
-		include utilis/head/metatags
-		include utilis/head/metaTagsPWA
-		include utilis/head/HTML5Shiv
-		include utilis/head/openGraph
-		include utilis/head/twetterCard
-		include utilis/head/cdnFonts
-		include utilis/head/cdnStyles
+		include utilis/head-utilies/metatags
+		include utilis/head-utilies/metaTagsPWA
+		include utilis/head-utilies/HTML5Shiv
+		include utilis/head-utilies/openGraph
+		include utilis/head-utilies/twetterCard
+		include utilis/head-utilies/cdnFonts
+		include utilis/head-utilies/cdnStyles
 		link(rel="stylesheet" href="assets/css/styles.css")
 		title= currentPage.slice(0,1).toUpperCase() + currentPage.slice(1) + " | " + siteName
 	body(class=currentPage, itemscope itemtype="http://schema.org/WebPage")
-		include utilis/bodyElements/upBrowser
-		//here start the Main Header
+		include utilis/body-utilies/upBrowser
+		//-here start the Main Header
 		header(class='main-header')
 			block main-header
-		//here ends the Main Header
-		//here start the Main Container
+		//-here start the Main Container
 		main(class='main-container')
 			block main-container
-			h1 hola
-		//here ends the Main Container
-		//here start the Main Footer
+		//-here start the Main Footer
 		footer(class='main-footer')
 			block main-footer
-		//here ends the Main Footer
-		include utilis/bodyElements/cdnLibraries
+		include utilis/body-utilies/cdnLibraries
 		script(src="assets/js/scripts-min.js")

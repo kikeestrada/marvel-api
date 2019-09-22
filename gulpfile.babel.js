@@ -76,31 +76,17 @@ gulp.task('styles-build', () => {
 		.pipe(stripCssComments({
 			preserve: false
 		}))
-		.pipe(uncss({
-			html : [
-				'./public/*.html'
-			],
-			ignore: [
-				'.hamburger--slider-r.is-active .hamburger-inner',
-				'.hamburger--slider-r.is-active .hamburger-inner::before',
-				'.hamburger--slider-r.is-active .hamburger-inner::after',
-				'.top-menu__mb-menu.show-sideNav',
-				'body.show-sideBody',
-				'.ed-tab__tab-link.tab-link-active',
-				'.ed-tab__tab-panel.tab-panel-active',
-				'.hero-container__hero-item',
-				'.ed-modal-container',
-				'.ed-modal-content',
-				'.fa-youtube-play',
-				'.Youtube',
-				'.Youtube-wrapper',
-				'.Youtube iframe',
-				'.Youtube a'
-			],
-			ignoreSheets: [
-				//
-			]
-		}))
+		// .pipe(uncss({
+		// 	html : [
+		// 		'./public/*.html'
+		// 	],
+		// 	ignore: [
+		// 		'tag.class'
+		// 	],
+		// 	ignoreSheets: [
+		// 		//
+		// 	]
+		// }))
 		.pipe(gulp.dest('./public/assets/css/'))
 });
 
@@ -108,7 +94,7 @@ gulp.task('pug-dev', () =>
 	gulp.src('./src/pug/pages/**/*.pug')
 		.pipe(plumber())
 		.pipe(data(function(file) {
-			return 	JSON.parse(fs.readFileSync(`${dir.src}/data/casos.json`))
+			return 	JSON.parse(fs.readFileSync(`${dir.src}/data/example.json`))
 		}))
 		.pipe(pug({
 			pretty: true,
@@ -121,7 +107,7 @@ gulp.task('pug-build', () =>
 	gulp.src('./src/pug/pages/**/*.pug')
 		.pipe(plumber())
 		.pipe(data(function(file) {
-			return 	JSON.parse(fs.readFileSync(`${dir.src}/data/casos.json`))
+			return 	JSON.parse(fs.readFileSync(`${dir.src}/data/example.json`))
 		}))
 		.pipe(pug({
 			basedir: './src/pug'
@@ -252,13 +238,19 @@ gulp.task('humans', function () {
 			],
 			site: [
 				'Standards: HTML5, CSS3',
-				'Components: jQuery, Normalize.css',
-				'Software: Atom'
+				'Components: Normalize.css, etc',
+				'Software: Web Storm'
 			],
-			note: 'Built with love by Hayden Bleasel.'
+			note: 'Built with love by Enrique Estrada.'
 		}))
 		.pipe(gulp.dest('./public'))
 });
 
 
-gulp.task('build', ['pug-build', 'scripts-build', 'images-build', 'cache', 'sitemap', 'humans', 'styles-build']);
+gulp.task('build', ['pug-build', 'scripts-build', 'images-build', 'cache', 'sitemap', 'humans', 'styles-build'], () => {
+	server.init({
+		server: {
+			baseDir: './public'
+		}
+	});
+});

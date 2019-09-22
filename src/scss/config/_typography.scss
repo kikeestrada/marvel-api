@@ -184,15 +184,12 @@ blockquote {
 		letter-spacing : -0.5em;
 	}
 }
-
 // Links
 // Menu links doesn't have underline
 a {
 	color : var(--second-color);
-
 	main & {
 		text-decoration : none;
-
 		&:hover {
 			text-decoration : underline;
 		}
@@ -201,5 +198,5 @@ a {
 
 ::selection {
 	background : var(--second-color);
-	color      : #FFF
+	color      : steelblue;
 }
