@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background : var(--body-bg);
+}
+
+strong {
+	font-weight : 700;
+}
+
+
+body {
+  margin         : var(--header-height) 0 0 0;
+  display        : flex;
+  flex-direction : column;
+  min-height     : calc(100vh - var(--header-height));
+}
+
+.main-footer {
+	background : var(--dark-color);
+	color      : #FFF;
+	padding    : 2rem 0;
+	font-size  : fontSize(small);
+	margin-top : auto;
+}

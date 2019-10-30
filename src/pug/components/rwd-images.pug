@@ -1,0 +1,17 @@
+//-
+mixin rwdImage(imgUrl1, imgUrl1_alt,imgUrl2,imgUrl2_alt,imgUrl3, imgUrl3_alt)
+	picture
+		source(srcset=`assets/img/${imgUrl3}`, alt=imgUrl3_alt, media='(min-width:960px)')
+		source(srcset=`assets/img/${imgUrl2}`, alt=imgUrl2_alt, media='(min-width:1280px)')
+		img(src=`assets/img/${imgUrl1}`, alt=imgUrl1_alt)
+
+
+div(class='ed-container')
+	div(class='ed-item')
+		h2 Media query image inline
+	div(class='ed-item')
+		+rwdImage(
+			'img1.jpg','alt-image1',
+			'img2.jpg','alt-image2',
+			'img3.jpg','alt-image3'
+			)

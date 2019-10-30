@@ -1,0 +1,10 @@
+mixin featured-publication(boolean)
+	article.featured-publication__item.s-border.s-radius.s-pxy-2.s-mb-0
+		.featured-publication__content.s-mb-1
+			if boolean
+				img.featured-publication__user-photo.s-mr-2(src="assets/img/img1.jpg", alt="Foto del usuario")
+			a(href="#").featured-publication__title.small simular un click en un select al momento de cargar la pagina
+		footer.featured-publication__footer
+			+vote-positive
+			+vote-negative
+			+comments

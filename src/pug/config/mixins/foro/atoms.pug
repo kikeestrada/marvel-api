@@ -1,0 +1,32 @@
+mixin iconSVG(id, fill)
+	svg.svg-icon(class=`${fill ? '' : 'svg-stroke'}`)&attributes(attributes)
+		use(href=`assets/img/icons.svg#${id}`)
+
+
+mixin vote-positive
+	a(href="#").vote.vote--positive.s-cross-center.small
+		+iconSVG("like")(class="s-mr-05")
+		span 13
+
+
+mixin vote-negative
+	a(href="#").vote.vote--negative.s-cross-center.small
+		+iconSVG("dislike")(class="s-mr-05")
+		span 3
+
+
+mixin comments(answerNumber)
+	a(href="#").answer.s-cross-center.small.s-mr-2
+		+iconSVG("comment")(class="s-mr-05")
+		span= `${answerNumber ? '4 respuestas' : '4'}`
+
+
+mixin form-item(id, title)
+	.ed-item.form__item
+		label.t3(for=id)= title
+		input(type="text" id=id)
+
+
+mixin editor-button(id)
+	button.form-editor__button
+		+iconSVG(id, true)(class="form-editor__toolbar-icon")

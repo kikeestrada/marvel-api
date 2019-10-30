@@ -1,0 +1,17 @@
+//- Images Grid basesd in Css Grid
+mixin grid(galleryCont, galleryItem, imgUrl, ext, numberItems)
+	//Gallery Container
+	div(class=`${galleryCont}`)
+		-for (var i=0; i < `${numberItems}`; i++)
+			//Gallery Item
+			div(class=`${galleryItem}`)
+				//gallery Image
+				img(src=`assets/img/${imgUrl}.${ext}`)
+
+
+section(class='section-divider')
+	div(class='ed-container')
+		div(class='ed-item')
+			h2 Image gallery No Using API
+		div(class='ed-item')
+			+grid('gallery','gallery-item','img','jpg',4)

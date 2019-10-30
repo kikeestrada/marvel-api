@@ -1,0 +1,64 @@
+.card--subscription {
+  height : auto !important;
+
+  .card__title {
+    font-family : $body-font;
+  }
+  .card__img {
+    width : 138px;
+    flex: none;
+
+    @include to(l) {
+      display : none;
+    }
+
+    img {
+      display : block;
+    }
+  }
+
+  .card__content {
+    align-items: flex-start;
+
+    @include to(l) {
+      display: block;
+      text-align : center;
+    }
+  }
+
+  [class*=button] {
+    display : inline-flex;
+    font-size : fontSize(title3);
+    padding : .4rem 1rem;
+    align-items: center;
+
+    del {
+      margin : 0 .25rem;
+    }
+
+    &::before {
+      content: "";
+      display : inline-block;
+      width: 2rem;
+      height : 1.5rem;
+      background: url(../assets/img/ticket.svg) no-repeat center / contain;
+      margin-right : .25rem;
+    }
+  }
+
+  + span {
+    padding-top : .5rem;
+    display : block;
+    @include to(l) {
+      text-align : center;
+    }
+  }
+}
+
+// Ocultar simbolo de soles en dia gratis
+.card--tde  [class*=button] {
+  font-size : 0;
+  span {
+    font-size : 1.25rem;
+  }
+}
