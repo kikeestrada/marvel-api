@@ -1,6 +1,5 @@
-# myGulpBoilerplate2019
+# myGulpBoilerplate Style guide
 
-## Este es un Boilerplate basado en el EdBoilerplate de EdTeam cuyo creador es Alvaro Felipe
-## respetando los derechos del autor hice unas modificaciones para adaptarlo mas a mi gusto
 
-###Gracias Alvaro
+https://kikeestrada.github.io/myStyleGuide/public/
+
