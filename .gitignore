@@ -50,5 +50,4 @@ test/styles.css
 js/ed-grid.js.map
 js/babel/.tern-port
 prod/
-public/
 package-lock.json
