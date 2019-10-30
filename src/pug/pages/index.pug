@@ -3,29 +3,29 @@ append config
 	-currentPage		= "home"
 	-siteName			= 'Layouts'
 	-content			= 'content'
-	-pageDescription	= 'Pagina inicial de EDboilerplate'
+	-pageDescription	= 'Pagina inicial de MyBoilerplate'
 block main-header
-	+banner(
-		"https://images.pexels.com/photos/265614/pexels-photo-265614.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
-		'Home',
-		'Description',
-		true,
-		''
-	)
+	//+banner(
+	//	"https://images.pexels.com/photos/265614/pexels-photo-265614.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",
+	//	'Home',
+	//	'Description',
+	//	true,
+	//	''
+	//)
 block main-container
-	include ../components/components
-	include ../components/markdown
+	//include ../components/components
+	//include ../components/markdown
 
 block main-footer
 block scripts
-	script.
-		document.getElementById('open-modal').addEventListener('click', () => {
-			edModal(
-				`<h1>Hola mundo, este es un modal</h1>
-				<p>Puedes poner cualquier tipo de contenido en el modal <br>
-				Para cerrar pulsa fuera de este cuadro. La equis arriba a la derecha no hace nada, es solo un placebo</p>`
-			)
-		})
+	//script.
+	//	document.getElementById('open-modal').addEventListener('click', () => {
+	//		edModal(
+	//			`<h1>Hola mundo, este es un modal</h1>
+	//			<p>Puedes poner cualquier tipo de contenido en el modal <br>
+	//			Para cerrar pulsa fuera de este cuadro. La equis arriba a la derecha no hace nada, es solo un placebo</p>`
+	//		)
+	//	})
 
 
 
