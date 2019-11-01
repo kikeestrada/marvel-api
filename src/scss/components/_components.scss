@@ -1,53 +1,7 @@
 @import "main-nav";
 @import "main-menu";
 @import "logo";
-
-//@import "main-banner";
-//@import "buttons";
-//mis componentes
-//@import "img-gallery";
-
-//edcamp Components
-//@import "users";
-//@import "talks";
-
-//Components del EDStyleGuide
-//@import "icons";
-//@import "vertical-menu";
-
-//@import "lists";
-//@import "code";
-//@import "helpers";
-//@import "tables";
-//@import "forms";
-//@import "cards";
-//@import "post";
-//@import "main-footer";
-//@import "topbar";
-//@import "modal";
-//@import "tabs";
-//@import "payments";
-//@import "video-class";
-//@import "live";
-//@import "temary";
-//@import "chat";
-//@import "notes";
-//@import "resources";
-//@import "course";
-//@import "method-payment";
-//@import "playlist";
-//@import "pricing-table";
-//@import "alt-banner";
-//@import "landing-page";
-//@import "faq";
-//@import "foro/buttons-foro";
-//@import "foro/comment-foro";
-//@import "foro/sidebar-foro";
-//@import "foro/top-user-foro";
-//@import "foro/user-foro";
-//@import "foro/publication";
-//@import "foro/featured-publication";
-//@import "scroll";
-//@import "meatballs";
-//@import "pagination";
-//@import "editor";
+@import "tables";
+@import "main-banner";
+@import "img-gallery";
+@import "code";
