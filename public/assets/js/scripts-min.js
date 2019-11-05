@@ -1,142 +1,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-// Crear elementos con atributos e hijo
-var createCustomElement = exports.createCustomElement = function createCustomElement(element, attributes, children) {
-  var customElement = document.createElement(element);
-  if (children !== undefined) children.forEach(function (el) {
-    if (el.nodeType) {
-      if (el.nodeType === 1 || el.nodeType === 11) customElement.appendChild(el);
-    } else {
-      customElement.innerHTML += el;
-    }
-  });
-  addAttributes(customElement, attributes);
-  return customElement;
-};
-
-// Añadir un objeto de atributos a un elemento
-var addAttributes = exports.addAttributes = function addAttributes(element, attrObj) {
-  for (var attr in attrObj) {
-    if (attrObj.hasOwnProperty(attr)) element.setAttribute(attr, attrObj[attr]);
-  }
-};
-
-// Envolver un elemento con otro
-var wrap = exports.wrap = function wrap(selector, wrapElementType, attributesObj) {
-  var element = getElement(selector),
-      nextSibling = element.nextElementSibling,
-      parent = element.parentElement,
-      wrapElement = createCustomElement(wrapElementType, attributesObj, element);
-
-  nextSibling ? parent.insertBefore(wrapElement, nextSibling) : parent.appendChild(wrapElement);
-
-  return wrapElement;
-};
-
-// Retornar un elemento del DOM (revisar)
-var getElement = exports.getElement = function getElement(elementOrSelector) {
-  var e = void 0,
-      g = void 0;
-  if (elementOrSelector.nodeType === 1) {
-    e = elementOrSelector;
-  } else {
-    g = document.querySelector(elementOrSelector);
-    if (document.querySelector(g)) {
-      e = document.querySelector(g);
-    } else {
-      e = document.createElement('div');
-      console.error('Function getElement() requires a DOM element\n    or a valid selector. It has been created a placeholder element to avoid\n    execution errors, please fixed as soon as posible');
-    }
-  }
-  return e;
-};
-
-// Media queries
-var mediaQuery = function mediaQuery(breakpoint, cb) {
-  var isChangeSize = function isChangeSize(mql) {
-    return cb(mql.matches);
-  };
-  breakpoint.addListener(isChangeSize);
-  isChangeSize(breakpoint);
-};
-
-// From (EDgrid equivalent)
-// cb receive a boolean argument from mediaQuery() function
-var from = function from(breakpoint, cb) {
-  var bp = window.matchMedia('(min-width: ' + breakpoint + ')');
-  mediaQuery(bp, cb);
-};
-
-// To (EDgrid equivalent)
-// cb receive a boolean argument from mediaQuery() function
-var to = function to(breakpoint, cb) {
-  var bp = window.matchMedia('(max-width: ' + breakpoint + ')');
-  mediaQuery(bp, cb);
-};
-
-},{}],2:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.edModal = undefined;
-
-var _helpers = require("./helpers");
-
-// Crear e imprimir modal
-var edModal = exports.edModal = function edModal(content) {
-  var modalContentEl = (0, _helpers.createCustomElement)('div', {
-    id: "ed-modal-content",
-    class: "ed-modal-content"
-  }, [content]),
-      modalEl = (0, _helpers.createCustomElement)('div', {
-    id: "ed-modal-container",
-    class: "ed-modal-container"
-  }, [modalContentEl]);
-
-  // Imprimir modal
-  document.body.appendChild(modalEl);
-
-  // Remover modal
-  var removeModal = function removeModal() {
-    return document.body.removeChild(modalEl);
-  };
-
-  // cerrar modal con click
-  modalEl.addEventListener('click', function (e) {
-    if (e.target === modalEl) removeModal();
-  });
-
-  // cerrar modal con escape
-  var offCloseModalEsc = function offCloseModalEsc() {
-    return removeEventListener('keyup', closeModalEsc);
-  };
-  var closeModalEsc = function closeModalEsc(e) {
-    if (e.key === "Escape") {
-      removeModal();
-      offCloseModalEsc();
-    }
-  };
-  addEventListener('keyup', closeModalEsc);
-};
-
-},{"./helpers":1}],3:[function(require,module,exports){
-'use strict';
-
 var _prism = require('../../vendors/prism/prism');
-
-var _modal = require('../../node_modules/ed-ui/src/js/modal');
-
-var _tabs = require('./modules/tabs');
-
-var _stickyCard = require('./modules/sticky-card');
-
-var _meatballs = require('./modules/meatballs');
 
 var _activeMenuItem = require('./modules/activeMenuItem');
 
@@ -148,26 +13,14 @@ var _menu2 = _interopRequireDefault(_menu);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-window.edModal = _modal.edModal;
-window.edTabs = _tabs.edTabs;
-window.stickyCard = _stickyCard.stickyCard;
-window.meatballsMenu = _meatballs.meatballsMenu;
-
 (0, _activeMenuItem2.default)('main-menu');
 (0, _activeMenuItem2.default)('vertical-menu');
 
 (0, _menu2.default)('main-menu', 'main-menu-toggle');
 (0, _menu2.default)('vertical-menu', 'vertical-menu-toggle');
-
-(0, _tabs.edTabs)();
-// edModal();
-
-// Sticky card de curso
-(0, _stickyCard.stickyCard)('course-title', 'course-temary', 'course-card');
-
 (0, _prism.Prism)();
 
-},{"../../node_modules/ed-ui/src/js/modal":2,"../../vendors/prism/prism":9,"./modules/activeMenuItem":4,"./modules/meatballs":5,"./modules/menu":6,"./modules/sticky-card":7,"./modules/tabs":8}],4:[function(require,module,exports){
+},{"../../vendors/prism/prism":4,"./modules/activeMenuItem":2,"./modules/menu":3}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -189,42 +42,7 @@ var activeMenu = function activeMenu(menuId) {
 
 exports.default = activeMenu;
 
-},{}],5:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var meatballsMenu = exports.meatballsMenu = function meatballsMenu() {
-
-  var menu = void 0;
-
-  document.body.addEventListener('click', function (e) {
-    var target = e.target;
-    if (target.classList.contains('meatballs-menu__button')) {
-      e.stopPropagation();
-      removeClass();
-      menu = target.nextElementSibling;
-      menu.classList.add('active');
-    }
-  });
-
-  var removeClass = function removeClass() {
-    if (menu != undefined && menu.classList.contains('active')) menu.classList.remove('active');
-  };
-
-  window.addEventListener('click', function () {
-    removeClass();
-  });
-
-  window.addEventListener('keyup', function (e) {
-    if (e.key === 'Escape') removeClass();
-  });
-};
-
-meatballsMenu();
-
-},{}],6:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -244,111 +62,7 @@ var openMenu = function openMenu(navId, toggleId) {
 
 exports.default = openMenu;
 
-},{}],7:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var stickyCard = exports.stickyCard = function stickyCard(topReferId, bottomReferId, cardId) {
-  var breakpoint = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '(min-width: 1024px)';
-
-  var topRefer = document.getElementById(topReferId),
-      bottomRefer = document.getElementById(bottomReferId),
-      card = document.getElementById(cardId),
-      largeBp = matchMedia(breakpoint);
-
-  var stickyStyles = function stickyStyles(breakpointBoolean) {
-    if (topRefer && card) {
-      var t = topRefer.getBoundingClientRect().top + scrollY,
-          l = card.parentElement.getBoundingClientRect().left,
-          w = card.parentElement.getBoundingClientRect().width;
-
-      var styles = breakpointBoolean ? '\n        position: fixed;\n        top: ' + t + 'px;\n        left: ' + l + 'px;\n        width: ' + w + 'px;\n      ' : '\n      position: static\n      ';
-      card.setAttribute('style', styles);
-
-      addEventListener("scroll", function () {
-        var b = bottomRefer.getBoundingClientRect().bottom;
-        if (b <= card.getBoundingClientRect().bottom && breakpointBoolean) {
-          var stylesAbsolute = '\n            position: absolute;\n            top: auto;\n            bottom: 0;\n          ';
-          card.setAttribute('style', stylesAbsolute);
-          card.parentElement.style.position = "relative";
-
-          if (card.getBoundingClientRect().top >= t) {
-            card.setAttribute('style', styles);
-          }
-        }
-      });
-    }
-  };
-
-  stickyStyles(largeBp.matches);
-  addEventListener('resize', function () {
-    stickyStyles(largeBp.matches);
-  });
-};
-
-},{}],8:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-/*
-* Funcionalidad de tabs
-* */
-
-var edTabs = exports.edTabs = function edTabs() {
-  var container = document.querySelector('.edui-tabs'),
-      tabsContainer = void 0,
-      panelsContainer = void 0,
-      tabs = void 0,
-      panels = void 0;
-
-  if (container) {
-    tabsContainer = container.querySelector('.tabs');
-    panelsContainer = container.querySelector('.panels');
-
-    if (tabsContainer) tabs = [].concat(_toConsumableArray(tabsContainer.querySelectorAll('.tab')));
-    if (panelsContainer) panels = [].concat(_toConsumableArray(panelsContainer.querySelectorAll('.panel')));
-  }
-
-  if (tabs && tabs.length > 0) tabs[0].classList.add('active');
-  if (panels && panels.length > 0) panels[0].classList.add('active');
-  if (tabsContainer) {
-    tabsContainer.setAttribute('data-tab', '1');
-
-    tabsContainer.addEventListener('click', function (e) {
-      var t = e.target,
-          i = tabs.indexOf(t);
-
-      if (t.classList.contains('tab') || t.tagName === "IMG") {
-        tabs.map(function (tab) {
-          return tab.classList.remove('active');
-        });
-        panels.map(function (panel) {
-          return panel.classList.remove('active');
-        });
-        tabsContainer.removeAttribute('data-tab');
-        tabsContainer.setAttribute('data-tab', '' + (i + 1));
-
-        if (t.tagName === 'IMG') {
-          t.parentElement.classList.add('active');
-          i = tabs.indexOf(t.parentElement);
-        } else {
-          t.classList.add('active');
-        }
-
-        panels[i].classList.add('active');
-      }
-    });
-  }
-};
-
-},{}],9:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -2331,6 +2045,6 @@ var typescript = Prism.util.clone(Prism.languages.typescript);
 Prism.languages.tsx = Prism.languages.extend('jsx', typescript);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[3]);
+},{}]},{},[1]);
 
 //# sourceMappingURL=scripts-min.js.map
