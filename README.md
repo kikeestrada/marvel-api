@@ -1,5 +1,5 @@
 # myGulpBoilerplate Style guide
 
 
-https://kikeestrada.github.io/myStyleGuide/public/
+https://kikeestrada.github.io/myStyleGuide/
 
