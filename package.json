@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "gulp",
 		"pug": "gulp pug",
-		"scripts": "gulp scripts",
+		"scripts": "gulp scripts" ,
 		"images": "gulp images",
 		"sitemap": "gulp sitemap"
 	},
