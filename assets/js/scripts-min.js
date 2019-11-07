@@ -3,66 +3,36 @@
 
 var _prism = require('../../vendors/prism/prism');
 
-var _activeMenuItem = require('./modules/activeMenuItem');
+var _topNav = require('./modules/topNav');
 
-var _activeMenuItem2 = _interopRequireDefault(_activeMenuItem);
+(function () {
 
-var _menu = require('./modules/menu');
+	(0, _topNav.topNav)();
+	(0, _prism.Prism)();
+})();
 
-var _menu2 = _interopRequireDefault(_menu);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _activeMenuItem2.default)('main-menu');
-(0, _activeMenuItem2.default)('vertical-menu');
-
-(0, _menu2.default)('main-menu', 'main-menu-toggle');
-(0, _menu2.default)('vertical-menu', 'vertical-menu-toggle');
-(0, _prism.Prism)();
-
-},{"../../vendors/prism/prism":4,"./modules/activeMenuItem":2,"./modules/menu":3}],2:[function(require,module,exports){
+},{"../../vendors/prism/prism":3,"./modules/topNav":2}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var activeMenu = function activeMenu(menuId) {
-  var menu = document.getElementById(menuId);
-  if (!menu) return;
-  var links = [].concat(_toConsumableArray(menu.querySelectorAll('a')));
-  if (!links) return;
-  links.map(function (link) {
-    var url = document.location.href;
-    if (link.href === url || link.href === url.slice(0, -1)) link.classList.add('active');
-  });
+var topNav = exports.topNav = function topNav() {
+	var myFunction = function myFunction() {
+		document.querySelector('.hamburger').addEventListener('click', function (e) {
+			e.preventDefault();
+			[].map.call(document.querySelectorAll('.hamburger'), function (el) {
+				el.classList.toggle('is-active');
+			});
+			[].map.call(document.querySelectorAll('.top-nav__menu'), function (el) {
+				el.classList.toggle('show-top-nav');
+			});
+		});
+	};
+	myFunction();
 };
-
-exports.default = activeMenu;
 
 },{}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var openMenu = function openMenu(navId, toggleId) {
-  var nav = document.getElementById(navId);
-  var toggle = document.getElementById(toggleId);
-
-  if (!nav || !toggle) return;
-
-  toggle.addEventListener('click', function () {
-    nav.classList.toggle('show');
-    toggle.classList.toggle('active');
-  });
-};
-
-exports.default = openMenu;
-
-},{}],4:[function(require,module,exports){
 (function (global){
 'use strict';
 
