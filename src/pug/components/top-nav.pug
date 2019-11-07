@@ -2,5 +2,9 @@ nav(class='top-nav')
 	div(class='top-nav__container')
 		img(src='assets/img/img1.jpg', alt='', class='top-nav__logo')
 		ul(class='top-nav__menu')
-			li: a(href='#', class='myclass') item1
-			li: a(href='#', class='myclass') item1
+			li(class='top-nav__li'): a(href='#', class='top-nav__anchor') item1
+			li(class='top-nav__li'): a(href='#', class='top-nav__anchor') item1
+		button(type='button', class='top-nav__mb-iconMenu hamburger hamburger--slider-r')
+			span.hamburger-box
+				span.hamburger-inner
+

@@ -3,11 +3,36 @@
 
 var _prism = require('../../vendors/prism/prism');
 
+var _topNav = require('./modules/topNav');
+
 (function () {
+
+	(0, _topNav.topNav)();
 	(0, _prism.Prism)();
 })();
 
-},{"../../vendors/prism/prism":2}],2:[function(require,module,exports){
+},{"../../vendors/prism/prism":3,"./modules/topNav":2}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var topNav = exports.topNav = function topNav() {
+	var myFunction = function myFunction() {
+		document.querySelector('.hamburger').addEventListener('click', function (e) {
+			e.preventDefault();
+			[].map.call(document.querySelectorAll('.hamburger'), function (el) {
+				el.classList.toggle('is-active');
+			});
+			[].map.call(document.querySelectorAll('.top-nav__menu'), function (el) {
+				el.classList.toggle('show-top-nav');
+			});
+		});
+	};
+	myFunction();
+};
+
+},{}],3:[function(require,module,exports){
 (function (global){
 'use strict';
 
