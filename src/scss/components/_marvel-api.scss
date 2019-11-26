@@ -1,0 +1,28 @@
+.hero-container {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+
+	&__hero-item {
+		box-sizing: border-box;
+		width: calc(50% - 2em);
+		overflow: hidden;
+		border: 2px solid rgba(#fff, .7);
+		position: relative;
+		cursor: pointer;
+		@include from(m)	{width: calc(50% 		- 2em);}
+		@include from(l)	{width: calc(33.33% 	- 2em);}
+		@include from(lg)	{width: calc(25% 		- 2em);}
+		@include from(xl)	{width: calc(20% 		- 2em);}
+		margin: 1em;
+		img {
+			width: 100%;
+			display: block;
+		}
+	}
+	&__title{font-size: 1em}
+	&__img{}
+	&__text{font-size: .5em}
+}

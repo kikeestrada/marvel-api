@@ -7,6 +7,7 @@
 	left          	: 0;
 	display 		: flex;
 	justify-content : center;
+	z-index: 1;
 
 	&__container{
 		display 		: flex;
@@ -51,6 +52,7 @@
 			display: block;
 			border-bottom: 1px solid #DFE0E0;
 			padding: 10px 0;
+			margin: 0;
 
 		}
 		margin-left: 1em;
@@ -72,17 +74,10 @@
 		span{
 			&.hamburger-inner{
 				background: black;
-				width: 30px;
-				&::after{
-					top: 18px;
-				}
-				&::before{
-					top: 9px;
-				}
+				&::after{}
+				&::before{}
 				&::after, &::before{
 					background: black;
-					width: 30px;
-
 				}
 			}
 		}
