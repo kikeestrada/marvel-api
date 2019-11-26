@@ -23,17 +23,19 @@ export const marvelApi = () => {
 				})
 			});
 			// .catch(e => console.log(e));
-		const drawHero = e =>{
-			const heroImage = `${e.thumbnail.path}/portrait_uncanny.${e.thumbnail.extension}`;
-			const hero = `
+
+	};
+
+	const drawHero = e =>{
+		const heroImage = `${e.thumbnail.path}/portrait_uncanny.${e.thumbnail.extension}`;
+		const hero = `
 				<div class="hero-container__hero-item">  
 					<h3 class="hero-container__title">${e.name}</h3> 
 					<img src="${heroImage}" class="hero-container__img">
 					<p class="hero-container__text">${e.description}</p>
 				</div>
 				`;
-			content.insertAdjacentHTML('beforeEnd', hero)
-		};
+		content.insertAdjacentHTML('beforeEnd', hero)
 	};
 
 	const searchHero = name =>{
@@ -50,25 +52,16 @@ export const marvelApi = () => {
 				})
 			})
 		.catch(e => console.log(e));
-		const drawHero = e =>{
-			const heroImage = `${e.thumbnail.path}/portrait_uncanny.${e.thumbnail.extension}`;
-			const hero = `
-				<div class="hero-container__hero-item">  
-					<h3 class="hero-container__title">${e.name}</h3> 
-					<img src="${heroImage}" class="hero-container__img">
-					<p class="hero-container__text">${e.description}</p>
-				</div>
-				`;
-			content.insertAdjacentHTML('beforeEnd', hero)
-		};
 	};
 
-	search.addEventListener("keyup", e =>{
-		if(e.keyCode === 13){
-			content.innerHTML = '';
-			searchHero(e.target.value.trim());
-		}
-	});
-
+	const fnSearch = () => {
+		search.addEventListener("keyup", e =>{
+			if(e.keyCode === 13){
+				content.innerHTML = '';
+				searchHero(e.target.value.trim());
+			}
+		});
+	}
+	fnSearch();
 	getConnection();
 };

@@ -39,9 +39,9 @@
     <!--here cdn fonts-->
     <!--here is the cdn styles-->
     <link rel="stylesheet" href="assets/css/styles.css">
-    <title>Home | Layouts</title>
+    <title>Page2 | Layouts</title>
   </head>
-  <body class="home" itemscope itemtype="http://schema.org/WebPage"><!--[if lt IE 8]>
+  <body class="page2" itemscope itemtype="http://schema.org/WebPage"><!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
     <!--here start the Main Header-->
@@ -69,13 +69,39 @@
     <!--here ends the Main Header-->
     <!--here start the Main Container-->
     <main class="main-container">
+      <!--include ../components/marvel-api-->
       <div class="ed-container">
         <div class="ed-item">
-          <input type="search" id="search" placeholder="search">
+          <h1>Search Filter</h1>
         </div>
         <div class="ed-item">
-          <h2>Marverl API</h2>
-          <div class="hero-container" id="hero-grid"></div>
+          <input type="search" id="searchInput" placeholder="search">
+        </div>
+        <div class="ed-item">
+          <article class="class-item">
+            <h1 class="class-item__title">Article 1</h1>
+            <ul class="class-item__fragments-container">
+              <li class="class-item__fragment">Presentacion e historia de JavaScript</li>
+              <li class="class-item__fragment">Como Utilizar JavaScript</li>
+              <li class="class-item__fragment">Sintaxis</li>
+              <li class="class-item__fragment">Espacios en Blanco</li>
+              <li class="class-item__fragment">Variables y Constantes</li>
+              <li class="class-item__fragment">tipos de Datos</li>
+              <li class="class-item__fragment">Operadores</li>
+            </ul>
+          </article>
+          <article class="class-item">
+            <h1 class="class-item__title">Article 2</h1>
+            <ul class="class-item__fragments-container">
+              <li class="class-item__fragment">Length y metodos de String</li>
+              <li class="class-item__fragment">If - Else</li>
+              <li class="class-item__fragment">Valores trutly</li>
+              <li class="class-item__fragment">switch</li>
+              <li class="class-item__fragment">Entorno de desarrollo</li>
+              <li class="class-item__fragment">Estucturas de Datos</li>
+              <li class="class-item__fragment">Eventos</li>
+            </ul>
+          </article>
         </div>
       </div>
     </main>
@@ -123,6 +149,7 @@
     </footer>
     <!--here ends the Main Footer-->
     <!--cdn libraries here-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
     <script src="assets/js/scripts-min.js"></script>
   </body>
 </html>

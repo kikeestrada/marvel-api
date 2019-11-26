@@ -1,7 +1,7 @@
 extends ../config/template
 append config
-	-currentPage        = "home"
-	-siteName            = 'Layouts'
+	-currentPage        = "page2"
+	-siteName           = 'Layouts'
 	-content            = 'content'
 	-pageDescription    = 'Pagina inicial de EDboilerplate'
 block main-header
@@ -13,5 +13,6 @@ block main-header
 	'dark-color'
 	)
 block main-container
-	include ../components/marvel-api
+	//include ../components/marvel-api
+	include ../components/search-filter
 block main-footer
