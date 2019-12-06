@@ -1,32 +1,39 @@
 .main-banner {
-  --color     : var(--first-color);
-  --color-alt : var(--accent-color);
-  --padding   : 2rem;
-  background  : var(--color);
-  color       : #FFF;
+	//mobile-first settings
+	color       		: $color-text-white;
+	background  		: $color-first;
+	--padding   		: 2rem;
 
+	&.main-banner--secondary { background : $color-second	}
+	&.main-banner--tertiary  { background : $color-third 	}
+	&.main-banner--accent    { background : $color-accent 	}
+	&.main-banner--dark      { background : $color-dark   	}
+	&.diagonal {
+		clip-path 		: polygon(0 0, 100% 0, 100% 100%, 0 84%);
+	}
 
-  &.diagonal {
-    clip-path : polygon(0 0, 100% 0, 100% 100%, 0 84%);
-  }
+	// Separación del contenido
+	padding-top    		: var(--padding);
+	padding-bottom 		: calc(var(--padding) * 1.25);
 
-  // Separación del contenido
-  padding-top    : var(--padding);
-  padding-bottom : calc(var(--padding) * 1.25);
+	@include from(l) {
+	--padding 			: 4rem;
+	}
 
-  @include from(l) {
-    --padding : 4rem;
-  }
+	&__button {
+		border: 1px solid $color-border;
+		&:hover{
+			background: $color-accent;
+			text-decoration: none;
+		}
+	}
 
-  .button {
-    --color-button : var(--color-alt);
-  }
+	.main-banner__img {
+		opacity 			: .3;
+	}
+
+	.main-banner__data {
+		position 			: relative;
+	}
 }
 
-.main-banner__img {
-  opacity : .1;
-}
-
-.main-banner__data {
-  position : relative;
-}

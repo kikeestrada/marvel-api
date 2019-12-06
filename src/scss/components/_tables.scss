@@ -24,7 +24,7 @@
 }
 
 table {
-  @include tableStyle($firstColor);
+  @include tableStyle($color-first);
   table-layout    : fixed;
   border-collapse : collapse;
   font-size       : fontSize(small);
@@ -42,7 +42,7 @@ table {
   td {
     min-width     : 100px;
     &:nth-child(even) {
-      background : rgba($borderColor, .2);
+      background : rgba($color-border, .2);
     }
   }
 
@@ -60,7 +60,7 @@ table {
   table-layout: fixed;
 }
 
-.table--secondary { @include tableStyle($secondColor) }
-.table--tertiary  { @include tableStyle($thirdColor)  }
-.table--accent    { @include tableStyle($accentColor) }
-.table--dark      { @include tableStyle($darkColor)   }
+.table--secondary { @include tableStyle($color-second) }
+.table--tertiary  { @include tableStyle($color-third)  }
+.table--accent    { @include tableStyle($color-accent) }
+.table--dark      { @include tableStyle($color-dark)   }
