@@ -1,66 +1,49 @@
-@mixin tableStyle($color) {
-  th { background   : $color }
-  tr {
-    border-bottom : 1px solid rgba($color, .3);
-    &:hover { background : rgba($color, .1) }
-  }
+@mixin tableStyle($tableBgTitleColor, $tableBgMainColor, $tableFontSize) {
+	table-layout    : fixed;
+	border-collapse : collapse;
+	font-size       : fontSize($tableFontSize);
+	background      : $tableBgMainColor;
+	th {
+		background   : $tableBgTitleColor;
+		font-family : 'Open Sans', sans-serif;
+		text-align   : left;
+		color        : #FFF;
+		font-weight  : 700;
+		border-right : 1px solid rgba(#fff, .2);
+	}
+	td {
+		border-bottom : 1px solid rgba($tableBgTitleColor, .3);
+		min-width     : 100px;
+		&:nth-child(even) {
+			background : rgba(#DFE0E0, .2);
+		}
+	}
+	tr:hover { background : rgba($tableBgTitleColor, .1) }
 
-  &.first-column {
-    td:first-child {
-      background : rgba($color,.75);
-      color: #fff;
-    }
-  }
-
-  &.center-content {
-    text-align: center;
-
-    th {
-      text-align: inherit;
-    }
-
-  }
-
-}
-
-table {
-  @include tableStyle($color-first);
-  table-layout    : fixed;
-  border-collapse : collapse;
-  font-size       : fontSize(small);
-  background      : #FFF;
-  min-width       : 100%;
-
-  th {
-    font-family  : 'Open Sans', sans-serif;
-    text-align   : left;
-    color        : #FFF;
-    font-weight  : 700;
-    border-right : 1px solid rgba(#fff, .2);
-  }
-
-  td {
-    min-width     : 100px;
-    &:nth-child(even) {
-      background : rgba($color-border, .2);
-    }
-  }
-
-  td, th {
-    padding : 1em 1.5em;
-  }
+	&.first-column {
+		td:first-child {
+			background : rgba($tableBgTitleColor,.75);
+			color: #fff;
+		}
+	}
+	td, th {
+		padding : 1em 1.5em;
+	}
 }
 
 .table-container {
-  overflow-x : auto;
-  border     : 1px solid var(--border-color);
-  margin-bottom : 2em;
-  min-width      : 100%;
-  position : relative;
-  table-layout: fixed;
+	width      : 100%;
+	overflow-x : auto;
+	border     : 1px solid #DFE0E0;
+	margin-bottom : 2em;
+	position : relative;
 }
 
-.table--secondary { @include tableStyle($color-second) }
-.table--tertiary  { @include tableStyle($color-third)  }
-.table--accent    { @include tableStyle($color-accent) }
-.table--dark      { @include tableStyle($color-dark)   }
+
+.ed-table{
+	@include tableStyle(
+		$tableBgTitleColor	: #ccc,
+		$tableBgMainColor	: white,
+		$tableFontSize		: small
+	)
+}
