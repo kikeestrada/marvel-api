@@ -47,21 +47,25 @@
     <!--here start the Main Header-->
     <header class="main-header">
       <nav class="top-nav">
-        <div class="top-nav__container"><img class="top-nav__logo" src="assets/img/img1.jpg" alt="">
+        <div class="top-nav__container"><a class="top-nav__link" href="/"><img class="top-nav__logo" src="assets/img/img1.jpg" alt=""></a>
           <ul class="top-nav__menu">
-            <li class="top-nav__li"><a class="top-nav__anchor" href="#">item1</a></li>
-            <li class="top-nav__li"><a class="top-nav__anchor" href="#">item1</a></li>
+            <li class="top-nav__li"><a class="top-nav__anchor" href="/">home</a></li>
+            <li class="top-nav__li"><a class="top-nav__anchor" href="page2.html">page2</a></li>
+            <li class="top-nav__li"><a class="top-nav__anchor" href="page3.html">page3</a></li>
           </ul>
           <button class="top-nav__mb-iconMenu hamburger hamburger--slider-r" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button>
         </div>
       </nav>
-      <!--+banner(-->
-      <!--	"https://images.pexels.com/photos/265614/pexels-photo-265614.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb",-->
-      <!--	'Home',-->
-      <!--	'Description',-->
-      <!--	true,-->
-      <!--	''-->
-      <!--)-->
+      <div class="main-banner img-container diagonal main-banner--">
+        <div class="ed-grid lg-grid-6">
+          <div class="lg-cols-4 lg-x-2"><img class="main-banner__img" src="https://images.pexels.com/photos/265614/pexels-photo-265614.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb"/>
+            <div class="main-banner__data s-center">
+              <p class="s-mb-0 t2">Home</p>
+              <p>Description</p><a class="main-banner__button button" href="#">Button Model</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
     <!--here ends the Main Header-->
     <!--here start the Main Container-->
@@ -389,6 +393,7 @@
     </footer>
     <!--here ends the Main Footer-->
     <!--cdn libraries here-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
     <script src="assets/js/scripts-min.js"></script>
   </body>
 </html>
