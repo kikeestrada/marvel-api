@@ -15,8 +15,15 @@ block main-header
 block main-container
 	include ../components/components
 	include ../components/markdown
+	include ../components/tabs
+	include ../components/modal
 
 block main-footer
 block scripts
+	script.
+		document.getElementById('modal-button').addEventListener('click', () => {
+			edModal(`<h2>Bienvenidos a EDui</h2>`)
+		})
+
 
 

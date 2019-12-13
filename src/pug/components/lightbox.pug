@@ -1,10 +1,10 @@
 h1 Lightbox gallery
-.gallery-container#gallery-container
+div(class='gallery-container', id='gallery-container')
 	- var n = 1
 	while n <= 12
 		.gallery-item
-			img(src="img/gallery-" + n + "-thumb.jpg" alt="Descripcion de la imagen " + n).gallery-img
+			img(src="assets/img/gallery-" + n + "-thumb.jpg" alt="Descripcion de la imagen " + n).gallery-img
 			-n++
-lightbox(document.getElementById('gallery-container'));
+
 
 
