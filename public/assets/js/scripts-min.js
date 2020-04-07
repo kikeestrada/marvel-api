@@ -424,11 +424,14 @@ var _modal = require('./modules/modal');
 
 var _verticalMenu = require('./modules/verticalMenu');
 
+var _btnMenu = require('./modules/btnMenu');
+
 (function () {
 	(0, _topNav.topNav)();
 	(0, _lightBox.lightBox)();
 	(0, _tabs.tabs)();
 	(0, _modal.edModal)();
+	(0, _btnMenu.btnMenu)();
 
 	if (document.body.classList.contains('home')) {
 		// functions here
@@ -442,7 +445,25 @@ var _verticalMenu = require('./modules/verticalMenu');
 	}
 })();
 
-},{"./modules/lightBox":4,"./modules/marvelApi":5,"./modules/modal":6,"./modules/searchFilter":7,"./modules/tabs":8,"./modules/topNav":9,"./modules/verticalMenu":10}],3:[function(require,module,exports){
+},{"./modules/btnMenu":3,"./modules/lightBox":5,"./modules/marvelApi":6,"./modules/modal":7,"./modules/searchFilter":8,"./modules/tabs":9,"./modules/topNav":10,"./modules/verticalMenu":11}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var btnMenu = exports.btnMenu = function btnMenu() {
+	var fnBtnMenu = function fnBtnMenu() {
+		document.querySelector('.hamburger').addEventListener('click', function (e) {
+			e.preventDefault();
+			[].map.call(document.querySelectorAll('.vertical-menu-toggle'), function (el) {
+				el.classList.toggle('active');
+			});
+		});
+	};
+	fnBtnMenu();
+};
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -522,7 +543,7 @@ var to = function to(breakpoint, cb) {
   mediaQuery(bp, cb);
 };
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -633,7 +654,7 @@ var lightBox = exports.lightBox = function lightBox() {
 	};
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -705,7 +726,7 @@ var marvelApi = exports.marvelApi = function marvelApi() {
 	getConnection();
 };
 
-},{"../../../node_modules/blueimp-md5/js/md5":1}],6:[function(require,module,exports){
+},{"../../../node_modules/blueimp-md5/js/md5":1}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -750,7 +771,7 @@ var edModal = exports.edModal = function edModal() {
 	});
 };
 
-},{"./helpers":3}],7:[function(require,module,exports){
+},{"./helpers":4}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -777,7 +798,7 @@ var searchFilter = exports.searchFilter = function searchFilter() {
 	fnFilter(document.getElementById('searchInput'), '.class-item__fragment', '.class-item');
 };
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -812,7 +833,7 @@ var tabs = exports.tabs = function tabs() {
 	});
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -833,7 +854,7 @@ var topNav = exports.topNav = function topNav() {
 	myFunction();
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

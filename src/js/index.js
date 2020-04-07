@@ -5,11 +5,13 @@ import {lightBox} from './modules/lightBox'
 import {tabs} from './modules/tabs'
 import {edModal} from './modules/modal'
 import {activeMenuItem} from "./modules/verticalMenu";
+import {btnMenu} from "./modules/btnMenu"
 (()=>{
 	topNav();
 	lightBox();
 	tabs();
 	edModal();
+	btnMenu()
 
 	if (document.body.classList.contains('home')) {
 		// functions here

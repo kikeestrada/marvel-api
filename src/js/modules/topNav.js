@@ -8,7 +8,8 @@ export const topNav = () => {
 			[].map.call(document.querySelectorAll('.top-nav__menu'), function(el) {
 				el.classList.toggle('show-top-nav');
 			});
-		});
+			
+		}); 
 	};
 	myFunction();
 };
