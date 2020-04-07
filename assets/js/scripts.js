@@ -765,7 +765,7 @@ var edModal = exports.edModal = function edModal() {
 		});
 	};
 
-	var saludo = '<h1>Bienvenidos a EDteam en vivo</h1>';
+	var saludo = '<h1>This is my Modal Component</h1>';
 	document.getElementById('show-modal').addEventListener('click', function () {
 		printModal(saludo);
 	});
