@@ -416,10 +416,22 @@ var _marvelApi = require('./modules/marvelApi');
 
 var _searchFilter = require('./modules/searchFilter');
 
-var _animatedScroll = require('./modules/animatedScroll');
+var _lightBox = require('./modules/lightBox');
+
+var _tabs = require('./modules/tabs');
+
+var _modal = require('./modules/modal');
+
+var _verticalMenu = require('./modules/verticalMenu');
+
+var _btnMenu = require('./modules/btnMenu');
 
 (function () {
 	(0, _topNav.topNav)();
+	(0, _lightBox.lightBox)();
+	(0, _tabs.tabs)();
+	(0, _modal.edModal)();
+	(0, _btnMenu.btnMenu)();
 
 	if (document.body.classList.contains('home')) {
 		// functions here
@@ -429,90 +441,220 @@ var _animatedScroll = require('./modules/animatedScroll');
 		(0, _marvelApi.marvelApi)();
 	} else if (document.body.classList.contains('page3')) {
 		// functions here
-		(0, _animatedScroll.animatedScroll)();
+
 	}
 })();
 
-},{"./modules/animatedScroll":3,"./modules/marvelApi":4,"./modules/searchFilter":5,"./modules/topNav":6}],3:[function(require,module,exports){
+},{"./modules/btnMenu":3,"./modules/lightBox":5,"./modules/marvelApi":6,"./modules/modal":7,"./modules/searchFilter":8,"./modules/tabs":9,"./modules/topNav":10,"./modules/verticalMenu":11}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var animatedScroll = exports.animatedScroll = function animatedScroll() {
-
-	var getInitialScroll = function getInitialScroll() {
-		return document.body.scrollTop;
-	};
-	var getFinalScroll = function getFinalScroll(element) {
-		return Math.floor(element.getBoundingClientRect().top + getInitialScroll());
-	};
-
-	var animatedScrollTo = function animatedScrollTo(targetElement, time) {
-		var initialPosition = getInitialScroll(),
-		    finalPosition = getFinalScroll(targetElement),
-		    distanceToScroll = finalPosition - initialPosition,
-		    scrollFragment = Math.ceil(distanceToScroll / time);
-		animateScroll(scrollFragment, finalPosition);
-		// console.log(scrollFragment);
-	};
-
-	var animateScroll = function animateScroll(scrollFragment, finalPosition) {
-		var animatedScroll = setInterval(function () {
-			document.body.scrollTop += scrollFragment;
-			if (scrollFragment > 0) {
-				if (document.body.scrollTop > finalPosition - scrollFragment / 2) clearInterval(animatedScroll);
-			} else {
-				if (document.body.scrollTop < finalPosition - scrollFragment / 2) clearInterval(animatedScroll);
-			}
-		}, 1);
-	};
-
-	var animatedScrollEvent = function animatedScrollEvent(originElement, time) {
-		if (originElement.tagName === 'A' && originElement.hash !== '') {
-			var targetElement = document.getElementById(originElement.hash.slice(1));
-			originElement.addEventListener('click', function (e) {
-				// console.log(targetElement);
-				e.preventDefault();
-				animatedScrollTo(targetElement, time);
+var btnMenu = exports.btnMenu = function btnMenu() {
+	var fnBtnMenu = function fnBtnMenu() {
+		document.querySelector('.hamburger').addEventListener('click', function (e) {
+			e.preventDefault();
+			[].map.call(document.querySelectorAll('.vertical-menu-toggle'), function (el) {
+				el.classList.toggle('active');
 			});
-		}
+		});
 	};
-
-	var animatedScrollAllLinks = function animatedScrollAllLinks(time) {
-		var links = document.links;
-		var _iteratorNormalCompletion = true;
-		var _didIteratorError = false;
-		var _iteratorError = undefined;
-
-		try {
-			for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-				var link = _step.value;
-
-				animatedScrollEvent(link, time);
-			}
-		} catch (err) {
-			_didIteratorError = true;
-			_iteratorError = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion && _iterator.return) {
-					_iterator.return();
-				}
-			} finally {
-				if (_didIteratorError) {
-					throw _iteratorError;
-				}
-			}
-		}
-	};
-
-	animatedScrollAllLinks(200);
-
-	// animatedScrollEvent(document.getElementById('link2'),500);
+	fnBtnMenu();
 };
 
 },{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// Crear elementos con atributos e hijo
+var createCustomElement = exports.createCustomElement = function createCustomElement(element, attributes, children) {
+  var customElement = document.createElement(element);
+  if (children !== undefined) children.forEach(function (el) {
+    if (el.nodeType) {
+      if (el.nodeType === 1 || el.nodeType === 11) customElement.appendChild(el);
+    } else {
+      customElement.innerHTML += el;
+    }
+  });
+  addAttributes(customElement, attributes);
+  return customElement;
+};
+
+// Añadir un objeto de atributos a un elemento
+var addAttributes = exports.addAttributes = function addAttributes(element, attrObj) {
+  for (var attr in attrObj) {
+    if (attrObj.hasOwnProperty(attr)) element.setAttribute(attr, attrObj[attr]);
+  }
+};
+
+// Envolver un elemento con otro
+var wrap = exports.wrap = function wrap(selector, wrapElementType, attributesObj) {
+  var element = getElement(selector),
+      nextSibling = element.nextElementSibling,
+      parent = element.parentElement,
+      wrapElement = createCustomElement(wrapElementType, attributesObj, element);
+
+  nextSibling ? parent.insertBefore(wrapElement, nextSibling) : parent.appendChild(wrapElement);
+
+  return wrapElement;
+};
+
+// Retornar un elemento del DOM (revisar)
+var getElement = exports.getElement = function getElement(elementOrSelector) {
+  var e = void 0,
+      g = void 0;
+  if (elementOrSelector.nodeType === 1) {
+    e = elementOrSelector;
+  } else {
+    g = document.querySelector(elementOrSelector);
+    if (document.querySelector(g)) {
+      e = document.querySelector(g);
+    } else {
+      e = document.createElement('div');
+      console.error('Function getElement() requires a DOM element\n    or a valid selector. It has been created a placeholder element to avoid\n    execution errors, please fixed as soon as posible');
+    }
+  }
+  return e;
+};
+
+// Media queries
+var mediaQuery = function mediaQuery(breakpoint, cb) {
+  var isChangeSize = function isChangeSize(mql) {
+    return cb(mql.matches);
+  };
+  breakpoint.addListener(isChangeSize);
+  isChangeSize(breakpoint);
+};
+
+// From (EDgrid equivalent)
+// cb receive a boolean argument from mediaQuery() function
+var from = function from(breakpoint, cb) {
+  var bp = window.matchMedia('(min-width: ' + breakpoint + ')');
+  mediaQuery(bp, cb);
+};
+
+// To (EDgrid equivalent)
+// cb receive a boolean argument from mediaQuery() function
+var to = function to(breakpoint, cb) {
+  var bp = window.matchMedia('(max-width: ' + breakpoint + ')');
+  mediaQuery(bp, cb);
+};
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var lightBox = exports.lightBox = function lightBox() {
+
+	// al hacer click en una imagen se abra su version grande
+
+	// Obtener la galería de imágenes
+	var getImages = function getImages(container) {
+		return [].concat(_toConsumableArray(container.querySelectorAll('img')));
+	};
+
+	// Obtener un array de las rutas de las imagenes grandes
+	var getLargeImages = function getLargeImages(gallery) {
+		return gallery.map(function (el) {
+			return el.src;
+		}).map(function (el) {
+			return el.replace('thumb', 'large');
+		});
+	};
+
+	// Obtener las descripciones de las imágenes
+	var getDescriptions = function getDescriptions(gallery) {
+		return gallery.map(function (el) {
+			return el.alt;
+		});
+	};
+
+	// Capturar el evento click en la galería para abrir el lightbox
+	var openLigthboxEvent = function openLigthboxEvent(container, gallery, larges, descriptions) {
+		container.addEventListener('click', function (e) {
+			var el = e.target,
+			    i = gallery.indexOf(el);
+			if (el.tagName === 'IMG') {
+				openLightbox(gallery, i, larges, descriptions);
+			}
+		});
+	};
+
+	// Imprimir overlay del lightbox en el body
+	var openLightbox = function openLightbox(gallery, i, larges, descriptions) {
+		var lightboxElement = document.createElement('div');
+		lightboxElement.innerHTML = '\n    <div class="lightbox-overlay">\n      <figure class="lightbox-container">\n        <div class="close-modal">\u2716</div>\n        <img src="' + larges[i] + '" class="ligthbox-image">\n        <figcaption>\n          <p class="lightbox-description">' + descriptions[i] + '</p>\n          <nav class="lightbox-navigation">\n            <a href="#" class="lightbox-navigation__button prev">\u25C0</a>\n            <span class="lightbox-navigation__counter">Imagen ' + (i + 1) + ' de ' + gallery.length + '</span>\n            <a href="#" class="lightbox-navigation__button next">\u25B6</a>\n          </nav>\n        </figcaption>\n      </figure>\n    </div>\n  ';
+		lightboxElement.id = 'lightbox';
+		document.body.appendChild(lightboxElement);
+		closeModal(lightboxElement);
+		navigateLightbox(lightboxElement, i, larges, descriptions);
+	};
+
+	var closeModal = function closeModal(modalElement) {
+		var closeModal = modalElement.querySelector('.close-modal');
+		closeModal.addEventListener('click', function (e) {
+			e.preventDefault();
+			document.body.removeChild(modalElement);
+		});
+	};
+
+	var navigateLightbox = function navigateLightbox(lightboxElement, i, larges, descriptions) {
+		var prevButton = lightboxElement.querySelector('.prev'),
+		    nextButton = lightboxElement.querySelector('.next'),
+		    image = lightboxElement.querySelector('img'),
+		    description = lightboxElement.querySelector('p'),
+		    counter = lightboxElement.querySelector('span'),
+		    closeButton = lightboxElement.querySelector('.close-modal');
+
+		window.addEventListener('keyup', function (e) {
+			if (e.key === 'ArrowRight') nextButton.click();
+			if (e.key === 'ArrowLeft') prevButton.click();
+			if (e.key === 'Escape') closeButton.click();
+		});
+		lightboxElement.addEventListener('click', function (e) {
+			e.preventDefault();
+			var target = e.target;
+
+			if (target === prevButton) {
+				if (i > 0) {
+					image.src = larges[i - 1];
+					i--;
+				} else {
+					image.src = larges[larges.length - 1];
+					i = larges.length - 1;
+				}
+			} else if (target === nextButton) {
+				if (i < larges.length - 1) {
+					image.src = larges[i + 1];
+					i++;
+				} else {
+					image.src = larges[0];
+					i = 0;
+				}
+			}
+
+			description.textContent = descriptions[i];
+			counter.textContent = 'Imagen ' + (i + 1) + ' de ' + larges.length;
+		});
+	};
+
+	var lightbox = function lightbox(container) {
+		var images = getImages(container),
+		    larges = getLargeImages(images),
+		    descriptions = getDescriptions(images);
+		openLigthboxEvent(container, images, larges, descriptions);
+	};
+};
+
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -584,7 +726,52 @@ var marvelApi = exports.marvelApi = function marvelApi() {
 	getConnection();
 };
 
-},{"../../../node_modules/blueimp-md5/js/md5":1}],5:[function(require,module,exports){
+},{"../../../node_modules/blueimp-md5/js/md5":1}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.edModal = undefined;
+
+var _helpers = require('./helpers');
+
+var edModal = exports.edModal = function edModal() {
+	// Imprimir modal
+	var printModal = function printModal(content) {
+		// crear contenedor interno
+		var modalContentEl = (0, _helpers.createCustomElement)('div', {
+			id: 'ed-modal-content',
+			class: 'ed-modal-content'
+		}, [content]),
+
+
+		// crear contenedor principal
+		modalContainerEl = (0, _helpers.createCustomElement)('div', {
+			id: 'ed-modal-container',
+			class: 'ed-modal-container'
+		}, [modalContentEl]);
+
+		// Imprimir el modal
+		document.body.appendChild(modalContainerEl);
+
+		// Remover el modal
+		var removeModal = function removeModal() {
+			return document.body.removeChild(modalContainerEl);
+		};
+
+		modalContainerEl.addEventListener('click', function (e) {
+			if (e.target === modalContainerEl) removeModal();
+		});
+	};
+
+	var saludo = '<h1>Bienvenidos a EDteam en vivo</h1>';
+	document.getElementById('show-modal').addEventListener('click', function () {
+		printModal(saludo);
+	});
+};
+
+},{"./helpers":4}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -611,7 +798,42 @@ var searchFilter = exports.searchFilter = function searchFilter() {
 	fnFilter(document.getElementById('searchInput'), '.class-item__fragment', '.class-item');
 };
 
-},{}],6:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var tabs = exports.tabs = function tabs() {
+	var container = document.querySelector('.edui-tabs'),
+	    tabsContainer = container.querySelector('.tabs'),
+	    panelsContainer = container.querySelector('.panels'),
+	    tabs = [].concat(_toConsumableArray(tabsContainer.querySelectorAll('.tab'))),
+	    panels = [].concat(_toConsumableArray(panelsContainer.querySelectorAll('.panel')));
+
+	tabs[0].classList.add('active');
+	panels[0].classList.add('active');
+
+	tabsContainer.addEventListener('click', function (e) {
+		var t = e.target,
+		    i = tabs.indexOf(t);
+		if (e.target.classList.contains('tab')) {
+			tabs.map(function (tab) {
+				return tab.classList.remove('active');
+			});
+			panels.map(function (panel) {
+				return panel.classList.remove('active');
+			});
+			t.classList.add('active');
+			panels[i].classList.add('active');
+		}
+	});
+};
+
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -631,6 +853,40 @@ var topNav = exports.topNav = function topNav() {
 	};
 	myFunction();
 };
+
+},{}],11:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var menu = exports.menu = function menu(toggleId, navId) {
+  var toggle = document.getElementById(toggleId),
+      nav = document.getElementById(navId);
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      nav.classList.toggle('show');
+      if (navId === 'main-menu') document.body.classList.toggle('main-menu-visible');
+    });
+  }
+};
+
+menu('vertical-menu-toggle', 'vertical-menu');
+
+var activeMenuItem = function activeMenuItem(containerId) {
+  var links = [].concat(_toConsumableArray(document.querySelectorAll('#' + containerId + ' a')));
+  var curentUrl = document.location.href;
+  links.map(function (link) {
+    if (link.href === curentUrl) {
+      link.classList.add('active');
+    }
+  });
+};
+
+activeMenuItem('vertical-menu');
 
 },{}]},{},[2]);
 

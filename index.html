@@ -52,6 +52,7 @@
             <li class="top-nav__li"><a class="top-nav__anchor" href="/">home</a></li>
             <li class="top-nav__li"><a class="top-nav__anchor" href="page2.html">page2</a></li>
             <li class="top-nav__li"><a class="top-nav__anchor" href="page3.html">page3</a></li>
+            <li class="top-nav__li"><a class="top-nav__anchor" href="page4.html">page4</a></li>
           </ul>
           <button class="top-nav__mb-iconMenu hamburger hamburger--slider-r" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button>
         </div>
@@ -348,6 +349,47 @@
 
         </div>
       </div>
+      <div class="ed-container">
+        <div class="ed-item">
+          <h1>Tabs</h1>
+        </div>
+        <div class="ed-item">
+          <div class="edui-tabs">
+            <div class="tabs">
+              <div class="tab">Opcion 1</div>
+              <div class="tab">Opcion 2</div>
+              <div class="tab">Opcion 3</div>
+              <div class="tab">Opcion 4</div>
+            </div>
+            <div class="panels">
+              <div class="panel">
+                <h2>Opcion 1</h2>
+                <p>Lorem ipsum dolor sit amet,</p>
+              </div>
+              <div class="panel">
+                <h2>Opcion 2</h2>
+                <p>Lorem ipsum dolor sit amet,</p>
+              </div>
+              <div class="panel">
+                <h2>Opcion 3</h2>
+                <p>Lorem ipsum dolor sit amet,</p>
+              </div>
+              <div class="panel">
+                <h2>Opcion 4</h2>
+                <p>Lorem ipsum dolor sit amet,</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ed-container">
+        <div class="ed-item">
+          <h2>Modal Window</h2>
+        </div>
+        <div class="ed-item">
+          <button id="show-modal">Show Modal</button>
+        </div>
+      </div>
     </main>
     <!--here ends the Main Container-->
     <!--here start the Main Footer-->
@@ -395,5 +437,10 @@
     <!--cdn libraries here-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
     <script src="assets/js/scripts-min.js"></script>
+    <script>
+      document.getElementById('modal-button').addEventListener('click', () => {
+      	edModal(`<h2>Bienvenidos a EDui</h2>`)
+      })
+    </script>
   </body>
 </html>
