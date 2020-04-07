@@ -26,7 +26,7 @@ export const edModal = () => {
 		})
 	};
 
-	let saludo = `<h1>Bienvenidos a EDteam en vivo</h1>`;
+	let saludo = `<h1>This is my Modal Component</h1>`;
 	document.getElementById('show-modal').addEventListener('click', () => {
 		printModal(saludo);
 	});

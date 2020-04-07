@@ -2,7 +2,7 @@
   --size: 3rem;
     width: var(--size);
     height: var(--size);
-    background: var(--first-color);
+    background: #007BDF;
     border-radius: 50%;
     position: fixed;
     bottom: 1rem;
@@ -25,7 +25,7 @@
       left: 17%;
       top: 46%;
       transform: rotate(-90deg); 
-    }
+    } 
   &.active{
     transform: rotate(-45deg);
   }
@@ -33,10 +33,11 @@
 
 
 .vertical-menu {
-  max-height : 0;
-  transition: max-height .5s;
-  overflow : hidden;
+ 
   @include fromTo(s,l) {
+    max-height : 0;
+    transition: max-height .5s;
+    overflow : hidden;
     &::before {
       content: "Documentation"; 
       display: block;

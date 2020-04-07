@@ -1,6 +1,6 @@
 block link-section 
 	- let active = 'Comenzar con EDgrid';
-	- let sidebar = { 'page 4': '/page4.html','pagina md 1': '/paginamd1.html', 'pagina md 2': '/paginamd2.html'}; 
+	- let sidebar = { 'page 4': 'page4.html','pagina md 1': 'paginamd1.html', 'pagina md 2': 'paginamd2.html'}; 
 
 aside(itemscope="itemscope" itemtype="http://schema.org/WPSideBar" role="complementary").ed-item.l-25 
 	.vertical-menu-toggle.to-l#vertical-menu-toggle(data-content="Filtros")
@@ -8,4 +8,4 @@ aside(itemscope="itemscope" itemtype="http://schema.org/WPSideBar" role="complem
 		ul
 			each val, key in sidebar 
 				li(itemprop="url")
-					a(href=val itemprop="name" title= "Enlace de " + key)= key
+					a(href=val itemprop="name" title= "Enlace de " + key)= key 
