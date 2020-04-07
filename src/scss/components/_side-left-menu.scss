@@ -8,16 +8,34 @@
     bottom: 1rem;
     right: 1rem;
     z-index: var(--z-fixed);
-    -webkit-transition: -webkit-transform .3s;
-    transition: -webkit-transform .3s;
-    transition: transform .3s;
     transition: transform .3s, -webkit-transform .3s;
-    -webkit-box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
-    box-shadow: 2px 2px 12px rgba(0,0,0,0.3)
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.3); 
+    &::before, &::after{
+      content: "";
+      width: calc(var(--size) * 0.7);
+      height: calc(var(--size) * 0.1);
+      background: #FFF;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: calc(var(--size) * 0.05);
+    }
+    &::after {
+      left: 17%;
+      top: 46%;
+      transform: rotate(-90deg); 
+    }
+  &.active{
+    transform: rotate(-45deg);
+  }
 }
 
 
 .vertical-menu {
+  max-height : 0;
+  transition: max-height .5s;
+  overflow : hidden;
   @include fromTo(s,l) {
     &::before {
       content: "Documentation"; 
@@ -56,15 +74,6 @@
       }
     }   
   }
-
-
-
-
-
-
-
-
-
   ul {
     @include clearMenu;
   }
