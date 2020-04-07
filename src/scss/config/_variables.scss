@@ -25,6 +25,9 @@
 	--z-modal   		: 1000;
 }
 
+
+
+
 // Sass Color Vars
 $color-first 			: var(--color-first			);
 $color-second 			: var(--color-second		);
@@ -48,3 +51,23 @@ $z-modal   				: var(--z-modal				);
 
 // Images path
 $images-path: 'https://ux.ed.team/img';
+
+
+// Colors
+$firstColor  : #007BDF;
+$secondColor : #00CBFF;
+$thirdColor  : #FF3C32;
+$accentColor : #FBA905;
+$darkColor   : #171A1C;
+
+// Complementary colors:
+$borderColor : #DFE0E0;
+$textColor   : #53575A;
+$bodyBg      : #FAFDFF;
+
+// z-ndex
+$z-back    : -10;
+$z-normal  : 1;
+$z-tooltip : 10;
+$z-fixed   : 100;
+$z-modal   : 1000;

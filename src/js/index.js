@@ -4,6 +4,7 @@ import {searchFilter} from './modules/searchFilter'
 import {lightBox} from './modules/lightBox'
 import {tabs} from './modules/tabs'
 import {edModal} from './modules/modal'
+import {activeMenuItem} from "./modules/verticalMenu";
 (()=>{
 	topNav();
 	lightBox();

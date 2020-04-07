@@ -1,0 +1,112 @@
+.vertical-menu-toggle{
+  --size: 3rem;
+    width: var(--size);
+    height: var(--size);
+    background: var(--first-color);
+    border-radius: 50%;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: var(--z-fixed);
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s, -webkit-transform .3s;
+    -webkit-box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.3)
+}
+
+
+.vertical-menu {
+  @include fromTo(s,l) {
+    &::before {
+      content: "Documentation"; 
+      display: block;
+      font-size: var(--h2-font-size);
+      margin-bottom: 1rem;
+      color: gray;
+      text-align: center;
+    }
+    position            : fixed;
+    top                 : 4rem;
+    height              : calc(100vh - 12rem);
+    padding             : 0 1rem;
+    width               : calc(100vw - 2rem);
+    right               : 7px;
+    background          : #282d31;
+    border              : none;   
+    overflow-y          : auto;
+    overflow            : hidden;
+    border-radius       : .25rem;
+    -webkit-box-shadow  : 0 5px 5px -2px rgba(0,0,0,0.3);
+    box-shadow          : 0 5px 5px -2px rgba(0,0,0,0.3);
+    z-index             : var(--z-fixed);   
+    transition          : max-height .5s;
+    &.show {
+      max-height        : 1000px;
+      margin-bottom     : 1em;
+    }
+    .active::before {
+      display           : none;
+    }
+    a {
+      &.active {     
+        border-bottom: 1px solid rgba(83,87,90,0.2);
+        border-top: 1px solid rgba(83,87,90,0.2);
+      }
+    }   
+  }
+
+
+
+
+
+
+
+
+
+  ul {
+    @include clearMenu;
+  }
+  li {
+    border-bottom       : none;
+    font-size           : fontSize(small);
+    color               : $textColor;
+  }
+  a {
+    font-size: 1.1em;
+    color: inherit;
+    display : block;
+    padding: 1em;
+    &.active {     
+      display : flex;
+      justify-content: space-between;
+      align-items: center;
+      color: $thirdColor;
+      &::after {
+        content: ''; 
+        display : block;
+        width : 1rem;
+        height: 1.5em;
+        background-image: url(https://ux.ed.team/img/icon-right.svg) !important;
+      }
+      &:hover {
+        text-decoration : none;
+      }
+    }
+  }
+
+  .active {
+    @include to(l){
+      border: none;
+    }
+    border-bottom: 1px solid $borderColor;
+    border-top: 1px solid $borderColor;
+    border-right: 1px solid $bodyBg;
+    margin-right: -1px;
+    &::after {
+      background : url(../images/icon-right.svg) 100%/contain no-repeat !important;
+      margin-right : 1rem;
+    }
+  }
+}

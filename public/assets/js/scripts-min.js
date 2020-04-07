@@ -422,6 +422,8 @@ var _tabs = require('./modules/tabs');
 
 var _modal = require('./modules/modal');
 
+var _verticalMenu = require('./modules/verticalMenu');
+
 (function () {
 	(0, _topNav.topNav)();
 	(0, _lightBox.lightBox)();
@@ -440,7 +442,7 @@ var _modal = require('./modules/modal');
 	}
 })();
 
-},{"./modules/lightBox":4,"./modules/marvelApi":5,"./modules/modal":6,"./modules/searchFilter":7,"./modules/tabs":8,"./modules/topNav":9}],3:[function(require,module,exports){
+},{"./modules/lightBox":4,"./modules/marvelApi":5,"./modules/modal":6,"./modules/searchFilter":7,"./modules/tabs":8,"./modules/topNav":9,"./modules/verticalMenu":10}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -830,6 +832,40 @@ var topNav = exports.topNav = function topNav() {
 	};
 	myFunction();
 };
+
+},{}],10:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var menu = exports.menu = function menu(toggleId, navId) {
+  var toggle = document.getElementById(toggleId),
+      nav = document.getElementById(navId);
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      nav.classList.toggle('show');
+      if (navId === 'main-menu') document.body.classList.toggle('main-menu-visible');
+    });
+  }
+};
+
+menu('vertical-menu-toggle', 'vertical-menu');
+
+var activeMenuItem = function activeMenuItem(containerId) {
+  var links = [].concat(_toConsumableArray(document.querySelectorAll('#' + containerId + ' a')));
+  var curentUrl = document.location.href;
+  links.map(function (link) {
+    if (link.href === curentUrl) {
+      link.classList.add('active');
+    }
+  });
+};
+
+activeMenuItem('vertical-menu');
 
 },{}]},{},[2]);
 
