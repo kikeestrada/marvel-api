@@ -412,11 +412,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _topNav = require('./modules/topNav');
 
-var _marvelApi = require('./modules/marvelApi');
-
 var _searchFilter = require('./modules/searchFilter');
 
-var _lightBox = require('./modules/lightBox');
+var _marvelApi = require('./modules/marvelApi');
 
 var _tabs = require('./modules/tabs');
 
@@ -426,26 +424,27 @@ var _verticalMenu = require('./modules/verticalMenu');
 
 var _btnMenu = require('./modules/btnMenu');
 
+// import {lightBox} from './modules/lightBox';
 (function () {
 	(0, _topNav.topNav)();
-	(0, _lightBox.lightBox)();
-	(0, _tabs.tabs)();
-	(0, _modal.edModal)();
-	(0, _btnMenu.btnMenu)();
-
 	if (document.body.classList.contains('home')) {
 		// functions here
+		(0, _tabs.tabs)();
+		(0, _modal.edModal)();
 	} else if (document.body.classList.contains('page2')) {
-		// functions here
 		(0, _searchFilter.searchFilter)();
 		(0, _marvelApi.marvelApi)();
+		// functions here
 	} else if (document.body.classList.contains('page3')) {
 		// functions here
-
+		// lightBox();
+	} else if (document.body.classList.contains('page4')) {
+		// functions here
+		(0, _btnMenu.btnMenu)();
 	}
 })();
 
-},{"./modules/btnMenu":3,"./modules/lightBox":5,"./modules/marvelApi":6,"./modules/modal":7,"./modules/searchFilter":8,"./modules/tabs":9,"./modules/topNav":10,"./modules/verticalMenu":11}],3:[function(require,module,exports){
+},{"./modules/btnMenu":3,"./modules/marvelApi":5,"./modules/modal":6,"./modules/searchFilter":7,"./modules/tabs":8,"./modules/topNav":9,"./modules/verticalMenu":10}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -549,117 +548,6 @@ var to = function to(breakpoint, cb) {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var lightBox = exports.lightBox = function lightBox() {
-
-	// al hacer click en una imagen se abra su version grande
-
-	// Obtener la galería de imágenes
-	var getImages = function getImages(container) {
-		return [].concat(_toConsumableArray(container.querySelectorAll('img')));
-	};
-
-	// Obtener un array de las rutas de las imagenes grandes
-	var getLargeImages = function getLargeImages(gallery) {
-		return gallery.map(function (el) {
-			return el.src;
-		}).map(function (el) {
-			return el.replace('thumb', 'large');
-		});
-	};
-
-	// Obtener las descripciones de las imágenes
-	var getDescriptions = function getDescriptions(gallery) {
-		return gallery.map(function (el) {
-			return el.alt;
-		});
-	};
-
-	// Capturar el evento click en la galería para abrir el lightbox
-	var openLigthboxEvent = function openLigthboxEvent(container, gallery, larges, descriptions) {
-		container.addEventListener('click', function (e) {
-			var el = e.target,
-			    i = gallery.indexOf(el);
-			if (el.tagName === 'IMG') {
-				openLightbox(gallery, i, larges, descriptions);
-			}
-		});
-	};
-
-	// Imprimir overlay del lightbox en el body
-	var openLightbox = function openLightbox(gallery, i, larges, descriptions) {
-		var lightboxElement = document.createElement('div');
-		lightboxElement.innerHTML = '\n    <div class="lightbox-overlay">\n      <figure class="lightbox-container">\n        <div class="close-modal">\u2716</div>\n        <img src="' + larges[i] + '" class="ligthbox-image">\n        <figcaption>\n          <p class="lightbox-description">' + descriptions[i] + '</p>\n          <nav class="lightbox-navigation">\n            <a href="#" class="lightbox-navigation__button prev">\u25C0</a>\n            <span class="lightbox-navigation__counter">Imagen ' + (i + 1) + ' de ' + gallery.length + '</span>\n            <a href="#" class="lightbox-navigation__button next">\u25B6</a>\n          </nav>\n        </figcaption>\n      </figure>\n    </div>\n  ';
-		lightboxElement.id = 'lightbox';
-		document.body.appendChild(lightboxElement);
-		closeModal(lightboxElement);
-		navigateLightbox(lightboxElement, i, larges, descriptions);
-	};
-
-	var closeModal = function closeModal(modalElement) {
-		var closeModal = modalElement.querySelector('.close-modal');
-		closeModal.addEventListener('click', function (e) {
-			e.preventDefault();
-			document.body.removeChild(modalElement);
-		});
-	};
-
-	var navigateLightbox = function navigateLightbox(lightboxElement, i, larges, descriptions) {
-		var prevButton = lightboxElement.querySelector('.prev'),
-		    nextButton = lightboxElement.querySelector('.next'),
-		    image = lightboxElement.querySelector('img'),
-		    description = lightboxElement.querySelector('p'),
-		    counter = lightboxElement.querySelector('span'),
-		    closeButton = lightboxElement.querySelector('.close-modal');
-
-		window.addEventListener('keyup', function (e) {
-			if (e.key === 'ArrowRight') nextButton.click();
-			if (e.key === 'ArrowLeft') prevButton.click();
-			if (e.key === 'Escape') closeButton.click();
-		});
-		lightboxElement.addEventListener('click', function (e) {
-			e.preventDefault();
-			var target = e.target;
-
-			if (target === prevButton) {
-				if (i > 0) {
-					image.src = larges[i - 1];
-					i--;
-				} else {
-					image.src = larges[larges.length - 1];
-					i = larges.length - 1;
-				}
-			} else if (target === nextButton) {
-				if (i < larges.length - 1) {
-					image.src = larges[i + 1];
-					i++;
-				} else {
-					image.src = larges[0];
-					i = 0;
-				}
-			}
-
-			description.textContent = descriptions[i];
-			counter.textContent = 'Imagen ' + (i + 1) + ' de ' + larges.length;
-		});
-	};
-
-	var lightbox = function lightbox(container) {
-		var images = getImages(container),
-		    larges = getLargeImages(images),
-		    descriptions = getDescriptions(images);
-		openLigthboxEvent(container, images, larges, descriptions);
-	};
-};
-
-},{}],6:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
 exports.marvelApi = undefined;
 
 var _md = require('../../../node_modules/blueimp-md5/js/md5');
@@ -726,7 +614,7 @@ var marvelApi = exports.marvelApi = function marvelApi() {
 	getConnection();
 };
 
-},{"../../../node_modules/blueimp-md5/js/md5":1}],7:[function(require,module,exports){
+},{"../../../node_modules/blueimp-md5/js/md5":1}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -771,7 +659,7 @@ var edModal = exports.edModal = function edModal() {
 	});
 };
 
-},{"./helpers":4}],8:[function(require,module,exports){
+},{"./helpers":4}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -798,7 +686,7 @@ var searchFilter = exports.searchFilter = function searchFilter() {
 	fnFilter(document.getElementById('searchInput'), '.class-item__fragment', '.class-item');
 };
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -833,7 +721,7 @@ var tabs = exports.tabs = function tabs() {
 	});
 };
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -854,7 +742,7 @@ var topNav = exports.topNav = function topNav() {
 	myFunction();
 };
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
