@@ -4,6 +4,11 @@
 	box-sizing: border-box;
 }
 
+::selection {
+	color: white;
+	background: #006DC6;
+}
+
 strong {
 	font-weight 	: 700;
 }
