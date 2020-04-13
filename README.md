@@ -7,7 +7,7 @@ for this i use:
 * ```CSS (sass)```
 * ```JS (ES6)```
 
-
+Instructions: 
 * ```gulp dev``` for develop environment
 * ```gulp build``` before deployment
 * ```npm run deploy``` to publish the site in gh pages
