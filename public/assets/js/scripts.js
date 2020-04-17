@@ -424,7 +424,6 @@ var _verticalMenu = require('./modules/verticalMenu');
 
 var _btnMenu = require('./modules/btnMenu');
 
-// import {lightBox} from './modules/lightBox';
 (function () {
 	(0, _topNav.topNav)();
 	if (document.body.classList.contains('home')) {
@@ -437,7 +436,6 @@ var _btnMenu = require('./modules/btnMenu');
 		// functions here
 	} else if (document.body.classList.contains('page3')) {
 		// functions here
-		// lightBox();
 	} else if (document.body.classList.contains('page4')) {
 		// functions here
 		(0, _btnMenu.btnMenu)();
