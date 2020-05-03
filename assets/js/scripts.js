@@ -420,16 +420,10 @@ var _tabs = require('./modules/tabs');
 
 var _modal = require('./modules/modal');
 
-var _verticalMenu = require('./modules/verticalMenu');
-
-var _btnMenu = require('./modules/btnMenu');
-
 (function () {
 	(0, _topNav.topNav)();
 	if (document.body.classList.contains('home')) {
 		// functions here
-		(0, _tabs.tabs)();
-		(0, _modal.edModal)();
 	} else if (document.body.classList.contains('page2')) {
 		(0, _searchFilter.searchFilter)();
 		(0, _marvelApi.marvelApi)();
@@ -438,29 +432,20 @@ var _btnMenu = require('./modules/btnMenu');
 		// functions here
 	} else if (document.body.classList.contains('page4')) {
 		// functions here
-		(0, _btnMenu.btnMenu)();
+	} else if (document.body.classList.contains('page5')) {
+		// functions here
+	} else if (document.body.classList.contains('page6')) {
+		// functions here
+	} else if (document.body.classList.contains('page7')) {
+		// functions here
+		(0, _tabs.tabs)();
+		(0, _modal.edModal)();
+	} else if (document.body.classList.contains('page8')) {
+		// functions here
 	}
 })();
 
-},{"./modules/btnMenu":3,"./modules/marvelApi":5,"./modules/modal":6,"./modules/searchFilter":7,"./modules/tabs":8,"./modules/topNav":9,"./modules/verticalMenu":10}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var btnMenu = exports.btnMenu = function btnMenu() {
-	var fnBtnMenu = function fnBtnMenu() {
-		document.querySelector('.hamburger').addEventListener('click', function (e) {
-			e.preventDefault();
-			[].map.call(document.querySelectorAll('.vertical-menu-toggle'), function (el) {
-				el.classList.toggle('active');
-			});
-		});
-	};
-	fnBtnMenu();
-};
-
-},{}],4:[function(require,module,exports){
+},{"./modules/marvelApi":4,"./modules/modal":5,"./modules/searchFilter":6,"./modules/tabs":7,"./modules/topNav":8}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -540,7 +525,7 @@ var to = function to(breakpoint, cb) {
   mediaQuery(bp, cb);
 };
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -612,7 +597,7 @@ var marvelApi = exports.marvelApi = function marvelApi() {
 	getConnection();
 };
 
-},{"../../../node_modules/blueimp-md5/js/md5":1}],6:[function(require,module,exports){
+},{"../../../node_modules/blueimp-md5/js/md5":1}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -657,7 +642,7 @@ var edModal = exports.edModal = function edModal() {
 	});
 };
 
-},{"./helpers":4}],7:[function(require,module,exports){
+},{"./helpers":3}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -684,7 +669,7 @@ var searchFilter = exports.searchFilter = function searchFilter() {
 	fnFilter(document.getElementById('searchInput'), '.class-item__fragment', '.class-item');
 };
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -719,7 +704,7 @@ var tabs = exports.tabs = function tabs() {
 	});
 };
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -739,40 +724,6 @@ var topNav = exports.topNav = function topNav() {
 	};
 	myFunction();
 };
-
-},{}],10:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var menu = exports.menu = function menu(toggleId, navId) {
-  var toggle = document.getElementById(toggleId),
-      nav = document.getElementById(navId);
-  if (toggle && nav) {
-    toggle.addEventListener('click', function () {
-      nav.classList.toggle('show');
-      if (navId === 'main-menu') document.body.classList.toggle('main-menu-visible');
-    });
-  }
-};
-
-menu('vertical-menu-toggle', 'vertical-menu');
-
-var activeMenuItem = function activeMenuItem(containerId) {
-  var links = [].concat(_toConsumableArray(document.querySelectorAll('#' + containerId + ' a')));
-  var curentUrl = document.location.href;
-  links.map(function (link) {
-    if (link.href === curentUrl) {
-      link.classList.add('active');
-    }
-  });
-};
-
-activeMenuItem('vertical-menu');
 
 },{}]},{},[2]);
 
