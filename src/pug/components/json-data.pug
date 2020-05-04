@@ -1,7 +1,0 @@
-mixin card(cardImage, cardTitle)
-	div
-		img(src=cardImage, style='width:100px')
-		p=cardTitle
--for (var i = 0; i < casos.length; i++)
-	-var caso = casos[i]
-	+card(caso.img, caso.title)

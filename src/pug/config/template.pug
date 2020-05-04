@@ -1,13 +1,12 @@
 block config
 	include vars
-	include mixins/mixins
 doctype html
 html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
 	include utilis/bodyElements/IEtags
 	head
 		include utilis/head/metatags
 		include utilis/head/metaTagsPWA
-		include utilis/head/HTML5Shiv
+		include utilis/head/HTML5Shiv 
 		include utilis/head/openGraph
 		include utilis/head/twetterCard
 		include utilis/head/cdnFonts
@@ -18,7 +17,6 @@ html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
 		include utilis/bodyElements/upBrowser
 		//here start the Main Header
 		header(class='main-header')
-			include ../components/top-nav
 			block main-header
 		//here ends the Main Header
 		//here start the Main Container
@@ -27,31 +25,6 @@ html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
 		//here ends the Main Container
 		//here start the Main Footer
 		footer(class='main-footer')
-			div(class='ed-grid m-grid-2 lg-grid-4 row-gap')
-				div
-					h2(class='t6') lorem
-					div(class='footer-info')
-						ul
-							li: a(href='#', class='myclass') Item list 1
-							li: a(href='#', class='myclass') Item list 2
-				div
-					h2(class='t6') lorem
-					div(class='footer-info')
-						ul
-							li: a(href='#', class='myclass') Item list 1
-							li: a(href='#', class='myclass') Item list 2
-				div
-					h2(class='t6') lorem
-					div(class='footer-info')
-						ul
-							li: a(href='#', class='myclass') Item list 1
-							li: a(href='#', class='myclass') Item list 2
-				div
-					h2(class='t6') lorem
-					div(class='footer-info')
-						ul
-							li: a(href='#', class='myclass') Item list 1
-							li: a(href='#', class='myclass') Item list 2
 			block main-footer
 		//here ends the Main Footer
 		include utilis/bodyElements/cdnLibraries

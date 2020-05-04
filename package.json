@@ -1,9 +1,9 @@
 {
-	"name": "myStyleGuide",
+	"name": "marvel-api",
 	"version": "1.0.0",
 	"description": "Simple scafolding for statics web projects",
 	"main": "gulpfile.babel.js",
-	"homepage": "https://kikeestrada.github.io/myStyleGuide/",
+	"homepage": "https://kikeestrada.github.io/marvel-api/",
 	"scripts": {
 		"start": "gulp",
 		"pug": "gulp pug",

@@ -3,28 +3,5 @@
   --header-height 		: 3rem;
   @include from(l) {
     --header-height 	: 4rem;
-  } 
-
-	//native color vars
-	--color-first      	: #007BDF;
-	--color-second     	: #00CBFF;
-	--color-third      	: #FF3C32;
-	--color-accent     	: #FBA905;
-	--color-dark       	: #282D31;
-	--color-border     	: #DFE0E0;
-	--color-light      	: #EAEAEA;
-	--color-text-white	: #FFFFFF;
-	--color-text-gray	: #53575A;
-	--color-body-bg 	: #F6F6F6;
-
-	//Native z-index vars
-	--z-back    		: -10;
-	--z-normal  		: 1;
-	--z-tooltip 		: 10;
-	--z-fixed   		: 100;
-	--z-modal   		: 1000; 
+  } 	
 }
-
-$body-font    : Lato,        'sans-serif';
-// Images path
-$images-path: 'https://ux.ed.team/img';

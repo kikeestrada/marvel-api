@@ -1,7 +1,7 @@
 {
-	"name": "myStyleGuide",
-	"short_name": "myStyleGuide",
-	"description": "Bienvenid@s a #myStyleGuide",
+	"name": "marvel-api",
+	"short_name": "marvel-api",
+	"description": "Bienvenid@s a #marvel-api",
 	"background_color": "#2B2B2B",
 	"theme_color": "#007BDF",
 	"orientation": "portrait",
