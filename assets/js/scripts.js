@@ -410,29 +410,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 },{}],2:[function(require,module,exports){
 'use strict';
 
-var _topNav = require('./modules/topNav');
-
-var _searchFilter = require('./modules/searchFilter');
-
 var _marvelApi = require('./modules/marvelApi');
 
 var _swDetecter = require('./modules/swDetecter');
 
-(function () {
-	(0, _topNav.topNav)();
-	(0, _swDetecter.swDetecter)();
-	if (document.body.classList.contains('home')) {
-		// functions here
-	} else if (document.body.classList.contains('page2')) {
-		// functions here
-		(0, _searchFilter.searchFilter)();
-		(0, _marvelApi.marvelApi)();
-	} else if (document.body.classList.contains('page3')) {
-		// functions here
-	}
-})();
+(0, _marvelApi.marvelApi)();
+(0, _swDetecter.swDetecter)();
 
-},{"./modules/marvelApi":3,"./modules/searchFilter":4,"./modules/swDetecter":5,"./modules/topNav":6}],3:[function(require,module,exports){
+},{"./modules/marvelApi":3,"./modules/swDetecter":4}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -510,33 +495,6 @@ var marvelApi = exports.marvelApi = function marvelApi() {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var searchFilter = exports.searchFilter = function searchFilter() {
-	// get the input data
-	var fnFilter = function fnFilter(inputElement, selector, selectorContainer) {
-		inputElement.addEventListener('keyup', function (e) {
-			if (e.key === 'Escape') e.target.value = '';
-			fnCompareElements(e.target.value.toUpperCase(), selector, selectorContainer);
-		});
-	};
-	var fnCompareElements = function fnCompareElements(filterText, selector, selectorContainer) {
-		var searchElements = document.querySelectorAll(selector);
-		var searchContainers = document.querySelectorAll(selectorContainer);
-		searchElements.forEach(function (el) {
-			el.textContent.toUpperCase().includes(filterText) ? el.style.display = 'block' : el.style.display = 'none';
-		});
-		searchContainers.forEach(function (el) {
-			el.textContent.toUpperCase().includes(filterText) ? el.style.display = 'block' : el.style.display = 'none';
-		});
-	};
-	fnFilter(document.getElementById('searchInput'), '.class-item__fragment', '.class-item');
-};
-
-},{}],5:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
 var swDetecter = exports.swDetecter = function swDetecter() {
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('./sw.js').then(function (reg) {
@@ -545,22 +503,6 @@ var swDetecter = exports.swDetecter = function swDetecter() {
 			return console.warn('Error al tratar de registrar el sw', err);
 		});
 	}
-};
-
-},{}],6:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var topNav = exports.topNav = function topNav() {
-	var d = document,
-	    headerBtn = d.querySelector('.hamburger'),
-	    nav = d.querySelector('.top-nav__menu');
-	headerBtn.addEventListener('click', function (e) {
-		e.preventDefault();
-		headerBtn.classList.toggle('is-active'), nav.classList.toggle('show-top-nav');
-	});
 };
 
 },{}]},{},[2]);
