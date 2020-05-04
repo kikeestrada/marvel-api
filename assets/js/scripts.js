@@ -412,12 +412,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _marvelApi = require('./modules/marvelApi');
 
-var _swDetecter = require('./modules/swDetecter');
-
 (0, _marvelApi.marvelApi)();
-(0, _swDetecter.swDetecter)();
 
-},{"./modules/marvelApi":3,"./modules/swDetecter":4}],3:[function(require,module,exports){
+},{"./modules/marvelApi":3}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -489,22 +486,6 @@ var marvelApi = exports.marvelApi = function marvelApi() {
 	getConnection();
 };
 
-},{"../../../node_modules/blueimp-md5/js/md5":1}],4:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var swDetecter = exports.swDetecter = function swDetecter() {
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('./sw.js').then(function (reg) {
-			return console.log('Registro de SW exitoso', reg);
-		}).catch(function (err) {
-			return console.warn('Error al tratar de registrar el sw', err);
-		});
-	}
-};
-
-},{}]},{},[2]);
+},{"../../../node_modules/blueimp-md5/js/md5":1}]},{},[2]);
 
 //# sourceMappingURL=scripts.js.map
