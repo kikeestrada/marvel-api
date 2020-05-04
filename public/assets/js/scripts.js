@@ -440,7 +440,7 @@ var marvelApi = exports.marvelApi = function marvelApi() {
 	var getConnection = function getConnection() {
 		var ts = Date.now(),
 		    hash = (0, _md2.default)(ts + privateKey + publicKey),
-		    URL = 'http://gateway.marvel.com/v1/public/characters?ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
+		    URL = 'https://gateway.marvel.com/v1/public/characters?ts=' + ts + '&apikey=' + publicKey + '&hash=' + hash;
 		// fetch(URL).then(response => console.log(response));
 		fetch(URL).then(function (response) {
 			return response.json();
