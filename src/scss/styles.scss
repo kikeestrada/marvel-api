@@ -1,8 +1,36 @@
 // Libraries
-@import "libraries/libraries";
-
+@import "~normalize.css/normalize.css";
+@import "libraries/prism"; 
+// Configuraciones
+$dev              : false;
+$dev-hover        : false;
+$max-width        : 1200px;
+$l-unit           : .5rem;
+$gap              : $l-unit * 4;  // 2rem
+$legacy           : false;
+$container        : ed-container;
+$item             : ed-item;
+$grid-container   : ed-grid;
+$grid-item        : -cols-;
+$max-grid-columns : 12;
+$fractions : 1,2,3,4,5,6,7,8,9,10;
+$breakpoints 		:
+	(
+		s	: 0,
+		m	: 640px,
+		l	: 960px,
+		lg	: 1280px,
+		xl	: 1600px
+	);
+@import "~ed-grid/ed-grid";
+@import "~hamburgers/_sass/hamburgers/hamburgers.scss";
+ 
 // Config
-@import "config/config";
+@import "config/vars";
+@import "config/functions"; 
+@import "config/typography";
+@import "config/mixins";
+
 
 // LAYOUT
 // Escribe solo los estilos de layout (division en regiones del viewport)
@@ -11,8 +39,6 @@
 // MODULOS (SMACSS) O COMPONENTES (ITCSS)
 @import "components/components";
 
-// Theme (colors and fonts)
-@import "theme/theme";
 
 // Utilities (hacks)
 // Todos los hacks que hayas necesitado para solucionar conflictos

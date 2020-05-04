@@ -21,10 +21,8 @@ body {
 	flex-direction 	: column;
 }
 
-.main-header{}
-.main-container{}
 .main-footer {
-	background 		: $color-first;
+	background 		: var(--color-first);
 	color      		: #FFF;
 	padding    		: 2rem 0;
 	font-size  		: fontSize(small);

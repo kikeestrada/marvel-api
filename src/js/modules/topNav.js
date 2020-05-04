@@ -1,15 +1,11 @@
 export const topNav = () => {
-	let myFunction = ()=> {
-		document.querySelector('.hamburger').addEventListener('click', function(e) {
+	const 
+		d = document,
+		headerBtn = d.querySelector('.hamburger'),
+		nav = d.querySelector('.top-nav__menu');
+		headerBtn.addEventListener('click', e => {
 			e.preventDefault();
-			[].map.call(document.querySelectorAll('.hamburger'), function(el) {
-				el.classList.toggle('is-active');
-			});
-			[].map.call(document.querySelectorAll('.top-nav__menu'), function(el) {
-				el.classList.toggle('show-top-nav');
-			});
-			
+			headerBtn.classList.toggle('is-active'),	
+			nav.classList.toggle('show-top-nav');
 		}); 
-	};
-	myFunction();
 };

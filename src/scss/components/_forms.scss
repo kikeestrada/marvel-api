@@ -28,7 +28,7 @@ textarea {
   padding       : .5rem 1rem;
 
   &::placeholder {
-    color : rgba($textColor, .75);
+    color : rgba(var(--text-color), .75);
   }
 
   &:disabled {
